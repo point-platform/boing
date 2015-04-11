@@ -8,6 +8,7 @@ namespace Boing
         public float Mass { get; set; }
         public float Damping { get; set; }
         public bool IsPinned { get; set; }
+        public object Tag { get; set; }
         public Vector2f Position { get; private set; }
         public Vector2f Velocity { get; private set; }
 
