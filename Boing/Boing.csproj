@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Forces\ColoumbForce.cs" />
     <Compile Include="Edge.cs" />
+    <Compile Include="Forces\KeepWithinBoundsForce.cs" />
     <Compile Include="Graph.cs" />
     <Compile Include="Forces\HookeForce.cs" />
     <Compile Include="IForce.cs" />

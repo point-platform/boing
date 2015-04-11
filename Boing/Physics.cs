@@ -6,7 +6,6 @@ namespace Boing
 {
     // TODO axis-align force for edges
     // TODO hysterisis spring force for edges
-    // TODO within bounds force for nodes
 
     public sealed class Physics
     {
