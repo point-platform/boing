@@ -1,16 +1,19 @@
+using System;
+using System.Diagnostics;
+
 namespace Boing.Forces
 {
-    // TODO should apply near border to prevent objects from bouncing on edges
-
     public sealed class KeepWithinBoundsForce : IForce
     {
         public float MaxX { get; set; }
         public float MaxY { get; set; }
         public float Magnitude { get; set; }
+        public float MaximumForce { get; set; }
 
-        public KeepWithinBoundsForce(float magnitude = 10.0f)
+        public KeepWithinBoundsForce(float magnitude = 3.0f, float maximumForce = 1000.0f)
         {
             Magnitude = magnitude;
+            MaximumForce = maximumForce;
         }
 
         public void ApplyTo(Graph graph)
@@ -22,20 +25,32 @@ namespace Boing.Forces
 
                 if (node.Position.X > MaxX)
                 {
-                    node.ApplyForce(new Vector2f(-Magnitude*(node.Position.X - MaxX), 0));
+                    var force = (float)Math.Pow(node.Position.X - MaxX, Magnitude);
+                    if (force > MaximumForce)
+                        force = MaximumForce;
+                    node.ApplyForce(new Vector2f(-force, 0));
                 }
                 else if (node.Position.X < -MaxX)
                 {
-                    node.ApplyForce(new Vector2f(Magnitude*(MaxX - node.Position.X), 0));
+                    var force = (float)Math.Pow(-MaxX - node.Position.X, Magnitude);
+                    if (force > MaximumForce)
+                        force = MaximumForce;
+                    node.ApplyForce(new Vector2f(force, 0));
                 }
 
                 if (node.Position.Y > MaxY)
                 {
-                    node.ApplyForce(new Vector2f(0, -Magnitude*(node.Position.Y - MaxY)));
+                    var force = (float)Math.Pow(node.Position.Y - MaxY, Magnitude);
+                    if (force > MaximumForce)
+                        force = MaximumForce;
+                    node.ApplyForce(new Vector2f(0, -force));
                 }
                 else if (node.Position.Y < -MaxY)
                 {
-                    node.ApplyForce(new Vector2f(0, Magnitude*(MaxY - node.Position.Y)));
+                    var force = (float)Math.Pow(-MaxY - node.Position.Y, Magnitude);
+                    if (force > MaximumForce)
+                        force = MaximumForce;
+                    node.ApplyForce(new Vector2f(0, force));
                 }
             }
         }
