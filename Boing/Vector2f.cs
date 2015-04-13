@@ -25,6 +25,16 @@ namespace Boing
             return this/Norm();
         }
 
+        public bool HasNaN
+        {
+            get { return float.IsNaN(X) || float.IsNaN(Y); }
+        }
+
+        public bool HasInfinity
+        {
+            get { return float.IsInfinity(X) || float.IsInfinity(Y); }
+        }
+
         #region Factories
 
         private static readonly Random _random = new Random();
