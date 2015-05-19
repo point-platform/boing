@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Boing
 {
@@ -33,7 +32,10 @@ namespace Boing
 
         public float GetTotalEnergy()
         {
-            return _graph.Nodes.Sum(node => 0.5f*node.Mass*(float)Math.Pow(node.Velocity.Norm(), 2));
+            float sum = 0;
+            foreach (var node in _graph.Nodes)
+                sum += 0.5f*node.Mass*(float)Math.Pow(node.Velocity.Norm(), 2);
+            return sum;
         }
     }
 }

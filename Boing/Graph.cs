@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Boing
 {
@@ -44,8 +43,11 @@ namespace Boing
         public void RemoveNode(Node node)
         {
             _nodeById.Remove(node.Id);
-            foreach (var edge in Edges.Where(e => e.Source.Id == node.Id || e.Target.Id == node.Id).ToList())
-                RemoveEdge(edge);
+            foreach (var edge in new List<Edge>(Edges))
+            {
+                if (edge.Source.Id == node.Id || edge.Target.Id == node.Id)
+                    RemoveEdge(edge);
+            }
         }
 
         public void RemoveEdge(Edge edge)
