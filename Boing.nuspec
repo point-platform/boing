@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Boing</id>
+    <version>0.1.0</version>
+    <title>Boing - Simple physics sandbox for .NET</title>
+    <authors>Drew Noakes, Krzysztof Dul</authors>
+    <owners>Drew Noakes, Krzysztof Dul</owners>
+    <licenseUrl>https://www.apache.org/licenses/LICENSE-2.0.html</licenseUrl>
+    <projectUrl>https://github.com/drewnoakes/boing</projectUrl>
+    <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Simple physics sandbox for .NET</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright Drew Noakes, Krzysztof Dul 2015</copyright>
+    <tags>physics simulation</tags>
+  </metadata>
+  <files>
+    <file src="Boing\bin\Release\Boing.dll" target="lib\net20" />
+  </files>
+</package>
