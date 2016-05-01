@@ -21,7 +21,7 @@ namespace Boing
         public void AddNode(Node node)
         {
             if (_nodeById.ContainsKey(node.Id))
-                throw new ArgumentException("Node with specified ID already exists.", "node");
+                throw new ArgumentException("Node with specified ID already exists.", nameof(node));
 
             _nodeById[node.Id] = node;
         }
@@ -29,7 +29,7 @@ namespace Boing
         public void AddEdge(Edge edge)
         {
             if (_edgeById.ContainsKey(edge.Id))
-                throw new ArgumentException("Edge with specified ID already exists.", "edge");
+                throw new ArgumentException("Edge with specified ID already exists.", nameof(edge));
 
             _edgeById[edge.Id] = edge;
         }
