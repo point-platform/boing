@@ -6,7 +6,7 @@ namespace Boing
 {
     public struct Vector2f
     {
-        public Vector2f(float x, float y) : this()
+        public Vector2f(float x, float y)
         {
             X = x;
             Y = y;
