@@ -4,7 +4,7 @@ namespace Boing
     {
         private Vector2f _acceleration;
 
-        public string Id { get; private set; }
+        public string Id { get; }
         public float Mass { get; set; }
         public float Damping { get; set; }
         public bool IsPinned { get; set; }
