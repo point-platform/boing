@@ -15,25 +15,13 @@ namespace Boing
         public readonly float X;
         public readonly float Y;
 
-        public float Norm()
-        {
-            return (float)Math.Sqrt(X*X + Y*Y);
-        }
+        public float Norm() => (float)Math.Sqrt(X*X + Y*Y);
 
-        public Vector2f Normalized()
-        {
-            return this/Norm();
-        }
+        public Vector2f Normalized() => this/Norm();
 
-        public bool HasNaN
-        {
-            get { return float.IsNaN(X) || float.IsNaN(Y); }
-        }
+        public bool HasNaN => float.IsNaN(X) || float.IsNaN(Y);
 
-        public bool HasInfinity
-        {
-            get { return float.IsInfinity(X) || float.IsInfinity(Y); }
-        }
+        public bool HasInfinity => float.IsInfinity(X) || float.IsInfinity(Y);
 
         #region Factories
 
@@ -46,10 +34,7 @@ namespace Boing
                 valueRange*((float)_random.NextDouble() - 0.5f));
         }
 
-        public static Vector2f Zero
-        {
-            get { return default(Vector2f); }
-        }
+        public static Vector2f Zero => default(Vector2f);
 
         #endregion
 

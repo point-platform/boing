@@ -8,15 +8,9 @@ namespace Boing
         private readonly Dictionary<string, Edge> _edgeById = new Dictionary<string, Edge>();
         private readonly Dictionary<string, Node> _nodeById = new Dictionary<string, Node>();
 
-        public IEnumerable<Node> Nodes
-        {
-            get { return _nodeById.Values; }
-        }
+        public IEnumerable<Node> Nodes => _nodeById.Values;
 
-        public IEnumerable<Edge> Edges
-        {
-            get { return _edgeById.Values; }
-        }
+        public IEnumerable<Edge> Edges => _edgeById.Values;
 
         public void Clear()
         {
