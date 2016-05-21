@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Boing</id>
-    <version>0.1.0</version>
+    <version>$version$</version>
     <title>Boing - Simple physics sandbox for .NET</title>
     <authors>Drew Noakes, Krzysztof Dul</authors>
     <owners>Drew Noakes, Krzysztof Dul</owners>
