@@ -11,12 +11,12 @@ namespace Boing.Forces
 
         public void ApplyTo(Graph graph)
         {
-            foreach (var edge in graph.Edges)
+            foreach (var node in graph.Nodes)
             {
-                if (edge.Target.IsPinned)
+                if (node.IsPinned)
                     continue;
 
-                edge.Target.ApplyForce(new Vector2f(0, Magnitude));
+                node.ApplyForce(new Vector2f(0, Magnitude));
             }
         }
     }
