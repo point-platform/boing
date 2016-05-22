@@ -10,7 +10,7 @@ The easiest way to use this library is via its [NuGet package](https://www.nuget
 
 ## Usage
 
-Build a `Graph` comprising `Node`s connected via `Edge`s.
+Build a `Graph` comprising `Node`s (point masses) connected via `Edge`s.
 
 Create a `Physics` object for that graph and add various forces.
 
