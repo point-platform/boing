@@ -1,4 +1,6 @@
-﻿namespace Boing
+﻿using System;
+
+namespace Boing
 {
     public sealed class Edge
     {
@@ -16,5 +18,13 @@
             Length = length;
             K = k;
         }
+
+        public LineSegment2f LineSegment => new LineSegment2f(Source.Position, Target.Position);
+
+        public Rectangle2f Bounds => new Rectangle2f(
+            Math.Min(Source.Position.X, Target.Position.X),
+            Math.Min(Source.Position.Y, Target.Position.Y),
+            Math.Abs(Source.Position.X - Target.Position.X),
+            Math.Abs(Source.Position.Y - Target.Position.Y));
     }
 }
