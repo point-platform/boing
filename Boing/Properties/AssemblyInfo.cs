@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Boing")]
 [assembly: AssemblyDescription("2D Physics Simulation for .NET")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Drew Noakes")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Boing")]
-[assembly: AssemblyCopyright("Copyright © Drew Noakes 2015")]
+[assembly: AssemblyCopyright("Copyright © Drew Noakes, Krzysztof Dul 2015-2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
