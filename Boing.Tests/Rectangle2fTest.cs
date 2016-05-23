@@ -5,6 +5,20 @@ namespace Boing.Tests
     public sealed class Rectangle2fTest
     {
         [Fact]
+        public void Corners()
+        {
+            var rect = new Rectangle2f(9, 9, 2, 2);
+
+            Assert.Equal(new Vector2f(9, 9), rect.Min);
+            Assert.Equal(new Vector2f(11, 11), rect.Max);
+
+            Assert.Equal(new Vector2f(9, 9), rect.TopLeft);
+            Assert.Equal(new Vector2f(11, 9), rect.TopRight);
+            Assert.Equal(new Vector2f(9, 11), rect.BottomLeft);
+            Assert.Equal(new Vector2f(11, 11), rect.BottomRight);
+        }
+
+        [Fact]
         public void Intersect()
         {
             var rect = new Rectangle2f(9, 9, 2, 2);

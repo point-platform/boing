@@ -24,8 +24,8 @@ namespace Boing
         {}
 
         public Vector2f TopLeft => Min;
-        public Vector2f TopRight => new Vector2f(Min.Y, Max.X);
-        public Vector2f BottomLeft => new Vector2f(Max.Y, Min.X);
+        public Vector2f TopRight => new Vector2f(Max.X, Min.Y);
+        public Vector2f BottomLeft => new Vector2f(Min.X, Max.Y);
         public Vector2f BottomRight => Max;
 
         public IEnumerable<LineSegment2f> Edges
