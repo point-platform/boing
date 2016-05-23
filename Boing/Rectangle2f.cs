@@ -57,15 +57,15 @@ namespace Boing
 
             foreach (var edge in Edges)
             {
-                float edgeU;
+                float lineT;
                 float edgeT;
                 Vector2f point;
-                if (edge.TryIntersect(line, out point, out edgeT, out edgeU))
+                if (edge.TryIntersect(line, out point, out edgeT, out lineT))
                 {
-                    if (edgeT > minT)
+                    if (lineT > minT)
                         continue;
                     found = true;
-                    minT = edgeT;
+                    minT = lineT;
                     intersectionPoint = point;
                 }
             }
