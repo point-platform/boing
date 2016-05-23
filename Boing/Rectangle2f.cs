@@ -20,10 +20,8 @@ namespace Boing
         }
 
         public Rectangle2f(float x, float y, float width, float height)
-        {
-            Min = new Vector2f(x, y);
-            Max = new Vector2f(x + width, y + height);
-        }
+            : this(new Vector2f(x, y), new Vector2f(x + width, y + height))
+        {}
 
         public Vector2f TopLeft => Min;
         public Vector2f TopRight => new Vector2f(Min.Y, Max.X);
