@@ -12,7 +12,7 @@ namespace Boing
         {
             if (min.X > max.X)
                 throw new ArgumentException("min.X is greater than max.X");
-            if (min.X > max.X)
+            if (min.Y > max.Y)
                 throw new ArgumentException("min.Y is greater than max.Y");
 
             Min = min;
