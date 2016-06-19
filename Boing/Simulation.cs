@@ -16,11 +16,6 @@ namespace Boing
 
         public IEnumerable<Spring> Springs => _springById.Values;
 
-        public void Add(IGlobalForce force)
-        {
-            _globalForces.Add(force);
-        }
-
         public void Update(float dt)
         {
             foreach (var force in _globalForces)
@@ -45,6 +40,11 @@ namespace Boing
         {
             _nodeById.Clear();
             _springById.Clear();
+        }
+
+        public void Add(IGlobalForce force)
+        {
+            _globalForces.Add(force);
         }
 
         public void Add(Node node)
