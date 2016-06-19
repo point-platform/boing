@@ -8,15 +8,13 @@ namespace Boing
     /// </summary>
     public sealed class Spring : ILocalForce
     {
-        public string Id { get; }
         public Node Source { get; }
         public Node Target { get; }
         public float Length { get; }
         public float K { get; }
 
-        public Spring(string id, Node source, Node target, float length = 100.0f, float k = 80.0f)
+        public Spring(Node source, Node target, float length = 100.0f, float k = 80.0f)
         {
-            Id = id;
             Source = source;
             Target = target;
             Length = length;

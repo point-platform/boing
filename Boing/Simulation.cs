@@ -8,38 +8,39 @@ namespace Boing
 
     public sealed class Simulation
     {
+        private readonly HashSet<Node> _nodes = new HashSet<Node>();
+        private readonly HashSet<ILocalForce> _localForces = new HashSet<ILocalForce>();
         private readonly List<IGlobalForce> _globalForces = new List<IGlobalForce>();
-        private readonly Dictionary<string, Spring> _springById = new Dictionary<string, Spring>();
-        private readonly Dictionary<string, Node> _nodeById = new Dictionary<string, Node>();
 
-        public IEnumerable<Node> Nodes => _nodeById.Values;
-
-        public IEnumerable<Spring> Springs => _springById.Values;
+        public IEnumerable<Node> Nodes => _nodes;
+        public IEnumerable<ILocalForce> LocalForces => _localForces;
+        public IEnumerable<IGlobalForce> GlobalForces => _globalForces;
 
         public void Update(float dt)
         {
             foreach (var force in _globalForces)
                 force.ApplyTo(this);
 
-            foreach (var force in Springs)
+            foreach (var force in _localForces)
                 force.Apply();
 
-            foreach (var node in _nodeById.Values)
+            foreach (var node in _nodes)
                 node.Update(dt);
         }
 
         public float GetTotalEnergy()
         {
             float sum = 0;
-            foreach (var node in _nodeById.Values)
+            foreach (var node in _nodes)
                 sum += 0.5f * node.Mass * (float)Math.Pow(node.Velocity.Norm(), 2);
             return sum;
         }
 
         public void Clear()
         {
-            _nodeById.Clear();
-            _springById.Clear();
+            _nodes.Clear();
+            _localForces.Clear();
+            _globalForces.Clear();
         }
 
         public void Add(IGlobalForce force)
@@ -49,45 +50,35 @@ namespace Boing
 
         public void Add(Node node)
         {
-            if (_nodeById.ContainsKey(node.Id))
-                throw new ArgumentException("Node with specified ID already exists.", nameof(node));
-
-            _nodeById[node.Id] = node;
-        }
-
-        public void Add(Spring spring)
-        {
-            if (_springById.ContainsKey(spring.Id))
-                throw new ArgumentException("Spring with specified ID already exists.", nameof(spring));
-
-            _springById[spring.Id] = spring;
+            if (!_nodes.Add(node))
+                throw new ArgumentException("Already exists.", nameof(node));
         }
 
         public void Remove(Node node)
         {
-            _nodeById.Remove(node.Id);
-            foreach (var spring in new List<Spring>(Springs))
-            {
-                if (spring.Source.Id == node.Id || spring.Target.Id == node.Id)
-                    Remove(spring);
-            }
+            if (!_nodes.Remove(node))
+                throw new ArgumentException("Not found.", nameof(node));
+
+            foreach (var localForce in node.LocalForces)
+                _localForces.Remove(localForce);
         }
 
-        public void Remove(Spring spring)
+        public void Add(ILocalForce localForce)
         {
-            _springById.Remove(spring.Id);
+            if (!_localForces.Add(localForce))
+                throw new ArgumentException("Already exists.", nameof(localForce));
+
+            foreach (var node in localForce.AppliesToNodes)
+                node.LocalForces.Add(localForce);
         }
 
-        public Node GetNodeById(string id)
+        public void Remove(ILocalForce localForce)
         {
-            Node node;
-            return _nodeById.TryGetValue(id, out node) ? node : null;
-        }
+            if (!_localForces.Remove(localForce))
+                throw new ArgumentException("Not found.", nameof(localForce));
 
-        public Spring GetSpringById(string id)
-        {
-            Spring spring;
-            return _springById.TryGetValue(id, out spring) ? spring : null;
+            foreach (var node in localForce.AppliesToNodes)
+                node.LocalForces.Remove(localForce);
         }
     }
 }

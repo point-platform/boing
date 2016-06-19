@@ -8,13 +8,13 @@ namespace Boing.Tests
         public void Code()
         {
             // construct a graph (this is a very simple one)
-            var node1 = new Node("Node1", mass: 1.0f);
-            var node2 = new Node("Node2", mass: 2.0f);
+            var node1 = new Node(mass: 1.0f);
+            var node2 = new Node(mass: 2.0f);
 
             var simulation = new Simulation();
             simulation.Add(node1);
             simulation.Add(node2);
-            simulation.Add(new Spring("Spring1", node1, node2));
+            simulation.Add(new Spring(node1, node2));
 
             // add various global forces to the simulation
             simulation.Add(new ColoumbForce());                       // nodes are attracted to one another

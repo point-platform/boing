@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace Boing
@@ -5,8 +6,7 @@ namespace Boing
     public sealed class Node
     {
         private Vector2f _force;
-
-        public string Id { get; }
+        internal HashSet<ILocalForce> LocalForces { get; } = new HashSet<ILocalForce>();
 
         public float Mass { get; set; }
         public float Damping { get; set; }
@@ -15,9 +15,8 @@ namespace Boing
         public Vector2f Position { get; set; }
         public Vector2f Velocity { get; private set; }
 
-        public Node(string id, float mass = 1.0f, float damping = 0.5f, Vector2f? position = null)
+        public Node(float mass = 1.0f, float damping = 0.5f, Vector2f? position = null)
         {
-            Id = id;
             Mass = mass;
             Damping = damping;
             Position = position ?? Vector2f.Random();
