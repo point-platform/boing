@@ -13,14 +13,14 @@ namespace Boing.Forces
 
         public void ApplyTo(Simulation simulation)
         {
-            foreach (var node1 in simulation.Nodes)
+            foreach (var pointMass1 in simulation.PointMasses)
             {
-                foreach (var node2 in simulation.Nodes)
+                foreach (var pointMass2 in simulation.PointMasses)
                 {
-                    if (ReferenceEquals(node1, node2))
+                    if (ReferenceEquals(pointMass1, pointMass2))
                         continue;
 
-                    var delta = node1.Position - node2.Position;
+                    var delta = pointMass1.Position - pointMass2.Position;
                     var distance = delta.Norm();
 
                     if (distance == 0.0f)
@@ -28,19 +28,19 @@ namespace Boing.Forces
 
                     var direction = delta.Normalized();
 
-                    if (!node1.IsPinned && !node2.IsPinned)
+                    if (!pointMass1.IsPinned && !pointMass2.IsPinned)
                     {
                         var force = direction*Repulsion/(distance*0.5f);
-                        node1.ApplyForce(force);
-                        node2.ApplyForce(force*-1);
+                        pointMass1.ApplyForce(force);
+                        pointMass2.ApplyForce(force*-1);
                     }
-                    else if (node1.IsPinned && !node2.IsPinned)
+                    else if (pointMass1.IsPinned && !pointMass2.IsPinned)
                     {
-                        node2.ApplyForce(direction*Repulsion/-distance);
+                        pointMass2.ApplyForce(direction*Repulsion/-distance);
                     }
-                    else if (!node1.IsPinned && node2.IsPinned)
+                    else if (!pointMass1.IsPinned && pointMass2.IsPinned)
                     {
-                        node1.ApplyForce(direction*Repulsion/distance);
+                        pointMass1.ApplyForce(direction*Repulsion/distance);
                     }
                 }
             }

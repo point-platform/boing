@@ -4,23 +4,23 @@ using System.Collections.Generic;
 namespace Boing
 {
     /// <summary>
-    /// Models a linear spring between two <see cref="Node"/> instances according to Hooke's law.
+    /// Models a linear spring between two <see cref="PointMass"/> instances according to Hooke's law.
     /// </summary>
     public sealed class Spring : ILocalForce
     {
-        public Node Source { get; }
-        public Node Target { get; }
+        public PointMass Source { get; }
+        public PointMass Target { get; }
         public float Length { get; }
         public float K { get; }
 
-        public Spring(Node source, Node target, float length = 100.0f, float k = 80.0f)
+        public Spring(PointMass source, PointMass target, float length = 100.0f, float k = 80.0f)
         {
             Source = source;
             Target = target;
             Length = length;
             K = k;
 
-            AppliesToNodes = new[] {source, target};
+            AppliesToPointMasses = new[] {source, target};
         }
 
         public LineSegment2f LineSegment => new LineSegment2f(Source.Position, Target.Position);
@@ -31,7 +31,7 @@ namespace Boing
             Math.Abs(Source.Position.X - Target.Position.X),
             Math.Abs(Source.Position.Y - Target.Position.Y));
 
-        public IEnumerable<Node> AppliesToNodes { get; }
+        public IEnumerable<PointMass> AppliesToPointMasses { get; }
 
         public void Apply()
         {

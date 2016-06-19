@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace Boing
 {
-    // TODO axis-align force for pairs of nodes
+    // TODO axis-align force for pairs of point masses
     // TODO hysteresis spring force
 
     public sealed class Simulation
     {
-        private readonly HashSet<Node> _nodes = new HashSet<Node>();
+        private readonly HashSet<PointMass> _pointMasses = new HashSet<PointMass>();
         private readonly HashSet<ILocalForce> _localForces = new HashSet<ILocalForce>();
         private readonly List<IGlobalForce> _globalForces = new List<IGlobalForce>();
 
-        public IEnumerable<Node> Nodes => _nodes;
+        public IEnumerable<PointMass> PointMasses => _pointMasses;
         public IEnumerable<ILocalForce> LocalForces => _localForces;
         public IEnumerable<IGlobalForce> GlobalForces => _globalForces;
 
@@ -24,21 +24,21 @@ namespace Boing
             foreach (var force in _localForces)
                 force.Apply();
 
-            foreach (var node in _nodes)
-                node.Update(dt);
+            foreach (var pointMass in _pointMasses)
+                pointMass.Update(dt);
         }
 
         public float GetTotalEnergy()
         {
             float sum = 0;
-            foreach (var node in _nodes)
-                sum += 0.5f * node.Mass * (float)Math.Pow(node.Velocity.Norm(), 2);
+            foreach (var pointMass in _pointMasses)
+                sum += 0.5f * pointMass.Mass * (float)Math.Pow(pointMass.Velocity.Norm(), 2);
             return sum;
         }
 
         public void Clear()
         {
-            _nodes.Clear();
+            _pointMasses.Clear();
             _localForces.Clear();
             _globalForces.Clear();
         }
@@ -48,18 +48,18 @@ namespace Boing
             _globalForces.Add(force);
         }
 
-        public void Add(Node node)
+        public void Add(PointMass pointMass)
         {
-            if (!_nodes.Add(node))
-                throw new ArgumentException("Already exists.", nameof(node));
+            if (!_pointMasses.Add(pointMass))
+                throw new ArgumentException("Already exists.", nameof(pointMass));
         }
 
-        public void Remove(Node node)
+        public void Remove(PointMass pointMass)
         {
-            if (!_nodes.Remove(node))
-                throw new ArgumentException("Not found.", nameof(node));
+            if (!_pointMasses.Remove(pointMass))
+                throw new ArgumentException("Not found.", nameof(pointMass));
 
-            foreach (var localForce in node.LocalForces)
+            foreach (var localForce in pointMass.LocalForces)
                 _localForces.Remove(localForce);
         }
 
@@ -68,8 +68,8 @@ namespace Boing
             if (!_localForces.Add(localForce))
                 throw new ArgumentException("Already exists.", nameof(localForce));
 
-            foreach (var node in localForce.AppliesToNodes)
-                node.LocalForces.Add(localForce);
+            foreach (var pointMass in localForce.AppliesToPointMasses)
+                pointMass.LocalForces.Add(localForce);
         }
 
         public void Remove(ILocalForce localForce)
@@ -77,8 +77,8 @@ namespace Boing
             if (!_localForces.Remove(localForce))
                 throw new ArgumentException("Not found.", nameof(localForce));
 
-            foreach (var node in localForce.AppliesToNodes)
-                node.LocalForces.Remove(localForce);
+            foreach (var pointMass in localForce.AppliesToPointMasses)
+                pointMass.LocalForces.Remove(localForce);
         }
     }
 }

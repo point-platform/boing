@@ -17,39 +17,39 @@ namespace Boing.Forces
 
         public void ApplyTo(Simulation simulation)
         {
-            foreach (var node in simulation.Nodes)
+            foreach (var pointMass in simulation.PointMasses)
             {
-                if (node.IsPinned)
+                if (pointMass.IsPinned)
                     continue;
 
-                if (node.Position.X > MaxX)
+                if (pointMass.Position.X > MaxX)
                 {
-                    var force = (float)Math.Pow(node.Position.X - MaxX, Magnitude);
+                    var force = (float)Math.Pow(pointMass.Position.X - MaxX, Magnitude);
                     if (force > MaximumForce)
                         force = MaximumForce;
-                    node.ApplyForce(new Vector2f(-force, 0));
+                    pointMass.ApplyForce(new Vector2f(-force, 0));
                 }
-                else if (node.Position.X < -MaxX)
+                else if (pointMass.Position.X < -MaxX)
                 {
-                    var force = (float)Math.Pow(-MaxX - node.Position.X, Magnitude);
+                    var force = (float)Math.Pow(-MaxX - pointMass.Position.X, Magnitude);
                     if (force > MaximumForce)
                         force = MaximumForce;
-                    node.ApplyForce(new Vector2f(force, 0));
+                    pointMass.ApplyForce(new Vector2f(force, 0));
                 }
 
-                if (node.Position.Y > MaxY)
+                if (pointMass.Position.Y > MaxY)
                 {
-                    var force = (float)Math.Pow(node.Position.Y - MaxY, Magnitude);
+                    var force = (float)Math.Pow(pointMass.Position.Y - MaxY, Magnitude);
                     if (force > MaximumForce)
                         force = MaximumForce;
-                    node.ApplyForce(new Vector2f(0, -force));
+                    pointMass.ApplyForce(new Vector2f(0, -force));
                 }
-                else if (node.Position.Y < -MaxY)
+                else if (pointMass.Position.Y < -MaxY)
                 {
-                    var force = (float)Math.Pow(-MaxY - node.Position.Y, Magnitude);
+                    var force = (float)Math.Pow(-MaxY - pointMass.Position.Y, Magnitude);
                     if (force > MaximumForce)
                         force = MaximumForce;
-                    node.ApplyForce(new Vector2f(0, force));
+                    pointMass.ApplyForce(new Vector2f(0, force));
                 }
             }
         }

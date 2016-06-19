@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace Boing
 {
-    public sealed class Node
+    public sealed class PointMass
     {
         private Vector2f _force;
         internal HashSet<ILocalForce> LocalForces { get; } = new HashSet<ILocalForce>();
@@ -15,7 +15,7 @@ namespace Boing
         public Vector2f Position { get; set; }
         public Vector2f Velocity { get; private set; }
 
-        public Node(float mass = 1.0f, float damping = 0.5f, Vector2f? position = null)
+        public PointMass(float mass = 1.0f, float damping = 0.5f, Vector2f? position = null)
         {
             Mass = mass;
             Damping = damping;

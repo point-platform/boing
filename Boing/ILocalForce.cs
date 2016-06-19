@@ -4,7 +4,7 @@ namespace Boing
 {
     public interface ILocalForce
     {
-        IEnumerable<Node> AppliesToNodes { get; }
+        IEnumerable<PointMass> AppliesToPointMasses { get; }
 
         void Apply();
     }

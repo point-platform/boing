@@ -44,7 +44,7 @@
     <Compile Include="Simulation.cs" />
     <Compile Include="IGlobalForce.cs" />
     <Compile Include="LineSegment2f.cs" />
-    <Compile Include="Node.cs" />
+    <Compile Include="PointMass.cs" />
     <Compile Include="Forces\OriginAttractionForce.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rectangle2f.cs" />

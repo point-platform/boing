@@ -11,12 +11,12 @@ namespace Boing.Forces
 
         public void ApplyTo(Simulation simulation)
         {
-            foreach (var node in simulation.Nodes)
+            foreach (var pointMass in simulation.PointMasses)
             {
-                if (node.IsPinned)
+                if (pointMass.IsPinned)
                     continue;
 
-                node.ApplyForce(new Vector2f(0, Magnitude));
+                pointMass.ApplyForce(new Vector2f(0, Magnitude));
             }
         }
     }

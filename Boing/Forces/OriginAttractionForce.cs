@@ -14,14 +14,14 @@ namespace Boing.Forces
 
         public void ApplyTo(Simulation simulation)
         {
-            foreach (var node in simulation.Nodes)
+            foreach (var pointMass in simulation.PointMasses)
             {
-                if (node.IsPinned)
+                if (pointMass.IsPinned)
                     continue;
 
-                var magnitude = -node.Position.Norm()*Stiffness;
+                var magnitude = -pointMass.Position.Norm()*Stiffness;
 
-                node.ApplyForce(node.Position.Normalized()*magnitude);
+                pointMass.ApplyForce(pointMass.Position.Normalized()*magnitude);
             }
         }
     }

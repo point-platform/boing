@@ -7,18 +7,22 @@ namespace Boing.Tests
     {
         public void Code()
         {
-            // construct a graph (this is a very simple one)
-            var node1 = new Node(mass: 1.0f);
-            var node2 = new Node(mass: 2.0f);
-
+            // create a new simulation
             var simulation = new Simulation();
-            simulation.Add(node1);
-            simulation.Add(node2);
-            simulation.Add(new Spring(node1, node2));
 
-            // add various global forces to the simulation
-            simulation.Add(new ColoumbForce());                       // nodes are attracted to one another
-            simulation.Add(new OriginAttractionForce(stiffness: 10)); // nodes move towards the origin
+            // create some point masses
+            var pointMass1 = new PointMass(mass: 1.0f);
+            var pointMass2 = new PointMass(mass: 2.0f);
+
+            simulation.Add(pointMass1);
+            simulation.Add(pointMass2);
+
+            // create a spring between these point masses
+            simulation.Add(new Spring(pointMass1, pointMass2));
+
+            // add some global forces to the simulation
+            simulation.Add(new ColoumbForce());                       // point masses are attracted to one another
+            simulation.Add(new OriginAttractionForce(stiffness: 10)); // point masses move towards the origin
             simulation.Add(new FlowDownwardForce(magnitude: 100));    // gravity
 
             // set up a loop
@@ -28,7 +32,7 @@ namespace Boing.Tests
                 simulation.Update(dt: 0.01f);
 
                 // use the resulting positions somehow
-                Console.WriteLine($"Node1 at {node1.Position}, Node2 at {node2.Position}");
+                Console.WriteLine($"PointMass1 at {pointMass1.Position}, PointMass2 at {pointMass2.Position}");
             }
         }
     }
