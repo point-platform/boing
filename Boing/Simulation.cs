@@ -29,7 +29,10 @@ namespace Boing
         {
             float sum = 0;
             foreach (var pointMass in _pointMasses)
-                sum += 0.5f * pointMass.Mass * (float)Math.Pow(pointMass.Velocity.Norm(), 2);
+            {
+                var speed = pointMass.Velocity.Norm();
+                sum += 0.5f*pointMass.Mass*speed*speed;
+            }
             return sum;
         }
 
