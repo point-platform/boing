@@ -36,6 +36,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FixedTimeStepUpdater.cs" />
     <Compile Include="Forces\ColoumbForce.cs" />
     <Compile Include="ILocalForce.cs" />
     <Compile Include="Spring.cs" />
