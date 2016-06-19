@@ -2,9 +2,10 @@ namespace Boing
 {
     public sealed class Node
     {
-        private Vector2f _acceleration;
+        private Vector2f _force;
 
         public string Id { get; }
+
         public float Mass { get; set; }
         public float Damping { get; set; }
         public bool IsPinned { get; set; }
@@ -22,21 +23,21 @@ namespace Boing
 
         public void ApplyForce(Vector2f force)
         {
-            // Accumulate acceleration
-            _acceleration += force/Mass;
+            // Accumulate force
+            _force += force;
         }
 
         public void Update(float dt)
         {
             // Update velocity
-            Velocity += _acceleration*dt;
+            Velocity += _force/Mass*dt;
             Velocity *= Damping;
 
             // Update position
             Position += Velocity*dt;
 
             // Clear acceleration
-            _acceleration = Vector2f.Zero;
+            _force = Vector2f.Zero;
         }
     }
 }
