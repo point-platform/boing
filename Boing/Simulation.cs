@@ -56,8 +56,7 @@ namespace Boing
 
         public void Remove(PointMass pointMass)
         {
-            if (!_pointMasses.Remove(pointMass))
-                throw new ArgumentException("Not found.", nameof(pointMass));
+            _pointMasses.Remove(pointMass);
 
             foreach (var localForce in pointMass.LocalForces)
                 _localForces.Remove(localForce);
@@ -74,8 +73,7 @@ namespace Boing
 
         public void Remove(ILocalForce localForce)
         {
-            if (!_localForces.Remove(localForce))
-                throw new ArgumentException("Not found.", nameof(localForce));
+            _localForces.Remove(localForce);
 
             foreach (var pointMass in localForce.AppliesToPointMasses)
                 pointMass.LocalForces.Remove(localForce);
