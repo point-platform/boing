@@ -103,9 +103,6 @@ namespace Boing
 
         #endregion
 
-        public override string ToString()
-        {
-            return $"X: {X}, Y: {Y}";
-        }
+        public override string ToString() => $"X: {X}, Y: {Y}";
     }
 }
