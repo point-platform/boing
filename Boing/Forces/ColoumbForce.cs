@@ -11,11 +11,11 @@ namespace Boing.Forces
 
         public float Repulsion { get; set; }
 
-        public void ApplyTo(Graph graph)
+        public void ApplyTo(Simulation simulation)
         {
-            foreach (var node1 in graph.Nodes)
+            foreach (var node1 in simulation.Nodes)
             {
-                foreach (var node2 in graph.Nodes)
+                foreach (var node2 in simulation.Nodes)
                 {
                     if (ReferenceEquals(node1, node2))
                         continue;

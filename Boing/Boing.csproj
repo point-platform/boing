@@ -40,13 +40,12 @@
     <Compile Include="Edge.cs" />
     <Compile Include="Forces\FlowDownwardForce.cs" />
     <Compile Include="Forces\KeepWithinBoundsForce.cs" />
-    <Compile Include="Graph.cs" />
+    <Compile Include="Simulation.cs" />
     <Compile Include="Forces\HookeForce.cs" />
     <Compile Include="IGlobalForce.cs" />
     <Compile Include="LineSegment2f.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Forces\OriginAttractionForce.cs" />
-    <Compile Include="Physics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rectangle2f.cs" />
     <Compile Include="Vector2f.cs" />

@@ -2,6 +2,6 @@ namespace Boing
 {
     public interface IGlobalForce
     {
-        void ApplyTo(Graph graph);
+        void ApplyTo(Simulation simulation);
     }
 }

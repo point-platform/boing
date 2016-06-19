@@ -2,9 +2,9 @@
 {
     public sealed class HookeForce : IGlobalForce
     {
-        public void ApplyTo(Graph graph)
+        public void ApplyTo(Simulation simulation)
         {
-            foreach (var edge in graph.Edges)
+            foreach (var edge in simulation.Edges)
             {
                 var source = edge.Source;
                 var target = edge.Target;

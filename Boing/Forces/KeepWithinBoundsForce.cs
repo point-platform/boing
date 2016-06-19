@@ -15,9 +15,9 @@ namespace Boing.Forces
             MaximumForce = maximumForce;
         }
 
-        public void ApplyTo(Graph graph)
+        public void ApplyTo(Simulation simulation)
         {
-            foreach (var node in graph.Nodes)
+            foreach (var node in simulation.Nodes)
             {
                 if (node.IsPinned)
                     continue;
