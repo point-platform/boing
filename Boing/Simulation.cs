@@ -3,9 +3,6 @@ using System.Collections.Generic;
 
 namespace Boing
 {
-    // TODO axis-align force for pairs of point masses
-    // TODO hysteresis spring force
-
     public sealed class Simulation
     {
         private readonly HashSet<PointMass> _pointMasses = new HashSet<PointMass>();
