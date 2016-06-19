@@ -16,6 +16,6 @@
     <tags>physics simulation</tags>
   </metadata>
   <files>
-    <file src="Boing\bin\Release\Boing.dll" target="lib\net20" />
+    <file src="Boing\bin\Release\Boing.dll" target="lib\net35" />
   </files>
 </package>
