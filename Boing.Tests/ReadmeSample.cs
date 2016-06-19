@@ -1,5 +1,5 @@
 ﻿using System;
-using Boing.Forces;
+using Boing;
 
 namespace Boing.Tests
 {

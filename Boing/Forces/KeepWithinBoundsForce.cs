@@ -1,6 +1,6 @@
 using System;
 
-namespace Boing.Forces
+namespace Boing
 {
     public sealed class KeepWithinBoundsForce : IGlobalForce
     {

@@ -1,4 +1,4 @@
-namespace Boing.Forces
+namespace Boing
 {
     /// <summary>
     /// An attraction towards the system's origin.
