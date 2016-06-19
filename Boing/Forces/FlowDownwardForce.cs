@@ -2,8 +2,12 @@ namespace Boing.Forces
 {
     public sealed class FlowDownwardForce : IGlobalForce
     {
+        /// <summary>
+        /// The magnitude of the downward force, in Newtons.
+        /// </summary>
         public float Magnitude { get; set; }
 
+        /// <param name="magnitude">The magnitude of the downward force, in Newtons.</param>
         public FlowDownwardForce(float magnitude = 10.0f)
         {
             Magnitude = magnitude;
