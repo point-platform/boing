@@ -16,9 +16,8 @@ namespace Boing.Tests
             simulation.Add(node2);
             simulation.Add(new Spring("Spring1", node1, node2));
 
-            // add various forces to the universe
+            // add various global forces to the simulation
             simulation.Add(new ColoumbForce());                       // nodes are attracted to one another
-            simulation.Add(new HookeForce());                         // updates springs between nodes
             simulation.Add(new OriginAttractionForce(stiffness: 10)); // nodes move towards the origin
             simulation.Add(new FlowDownwardForce(magnitude: 100));    // gravity
 

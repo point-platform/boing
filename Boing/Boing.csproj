@@ -37,11 +37,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Forces\ColoumbForce.cs" />
+    <Compile Include="ILocalForce.cs" />
     <Compile Include="Spring.cs" />
     <Compile Include="Forces\FlowDownwardForce.cs" />
     <Compile Include="Forces\KeepWithinBoundsForce.cs" />
     <Compile Include="Simulation.cs" />
-    <Compile Include="Forces\HookeForce.cs" />
     <Compile Include="IGlobalForce.cs" />
     <Compile Include="LineSegment2f.cs" />
     <Compile Include="Node.cs" />

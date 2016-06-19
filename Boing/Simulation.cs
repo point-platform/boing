@@ -26,6 +26,9 @@ namespace Boing
             foreach (var force in _globalForces)
                 force.ApplyTo(this);
 
+            foreach (var force in Springs)
+                force.Apply();
+
             foreach (var node in _nodeById.Values)
                 node.Update(dt);
         }
