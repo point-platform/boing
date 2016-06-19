@@ -22,9 +22,9 @@ var node1 = new Node("Node1", mass: 1.0f);
 var node2 = new Node("Node2", mass: 2.0f);
 
 var simulation = new Simulation();
-simulation.AddNode(node1);
-simulation.AddNode(node2);
-simulation.AddEdge(new Edge("Edge1", node1, node2));
+simulation.Add(node1);
+simulation.Add(node2);
+simulation.Add(new Edge("Edge1", node1, node2));
 
 // add various forces to the universe
 simulation.Add(new ColoumbForce());                       // nodes are attracted

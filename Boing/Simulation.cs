@@ -44,7 +44,7 @@ namespace Boing
             _edgeById.Clear();
         }
 
-        public void AddNode(Node node)
+        public void Add(Node node)
         {
             if (_nodeById.ContainsKey(node.Id))
                 throw new ArgumentException("Node with specified ID already exists.", nameof(node));
@@ -52,7 +52,7 @@ namespace Boing
             _nodeById[node.Id] = node;
         }
 
-        public void AddEdge(Edge edge)
+        public void Add(Edge edge)
         {
             if (_edgeById.ContainsKey(edge.Id))
                 throw new ArgumentException("Edge with specified ID already exists.", nameof(edge));
@@ -60,17 +60,17 @@ namespace Boing
             _edgeById[edge.Id] = edge;
         }
 
-        public void RemoveNode(Node node)
+        public void Remove(Node node)
         {
             _nodeById.Remove(node.Id);
             foreach (var edge in new List<Edge>(Edges))
             {
                 if (edge.Source.Id == node.Id || edge.Target.Id == node.Id)
-                    RemoveEdge(edge);
+                    Remove(edge);
             }
         }
 
-        public void RemoveEdge(Edge edge)
+        public void Remove(Edge edge)
         {
             _edgeById.Remove(edge.Id);
         }
