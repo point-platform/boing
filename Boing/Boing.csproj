@@ -39,7 +39,7 @@
     <Compile Include="FixedTimeStepUpdater.cs" />
     <Compile Include="Forces\ColoumbForce.cs" />
     <Compile Include="ILocalForce.cs" />
-    <Compile Include="Spring.cs" />
+    <Compile Include="Forces\Spring.cs" />
     <Compile Include="Forces\FlowDownwardForce.cs" />
     <Compile Include="Forces\KeepWithinBoundsForce.cs" />
     <Compile Include="Simulation.cs" />
