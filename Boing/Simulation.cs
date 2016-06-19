@@ -8,7 +8,7 @@ namespace Boing
 
     public sealed class Simulation
     {
-        private readonly List<IGlobalForce> _forces = new List<IGlobalForce>();
+        private readonly List<IGlobalForce> _globalForces = new List<IGlobalForce>();
         private readonly Dictionary<string, Spring> _springById = new Dictionary<string, Spring>();
         private readonly Dictionary<string, Node> _nodeById = new Dictionary<string, Node>();
 
@@ -18,12 +18,12 @@ namespace Boing
 
         public void Add(IGlobalForce force)
         {
-            _forces.Add(force);
+            _globalForces.Add(force);
         }
 
         public void Update(float dt)
         {
-            foreach (var force in _forces)
+            foreach (var force in _globalForces)
                 force.ApplyTo(this);
 
             foreach (var node in _nodeById.Values)
