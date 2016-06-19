@@ -8,7 +8,7 @@ namespace Boing
 
     public sealed class Physics
     {
-        private readonly List<IForce> _forces = new List<IForce>();
+        private readonly List<IGlobalForce> _forces = new List<IGlobalForce>();
         private readonly Graph _graph;
 
         public Physics(Graph graph)
@@ -16,7 +16,7 @@ namespace Boing
             _graph = graph;
         }
 
-        public void Add(IForce force)
+        public void Add(IGlobalForce force)
         {
             _forces.Add(force);
         }

@@ -1,6 +1,6 @@
 ﻿namespace Boing.Forces
 {
-    public sealed class HookeForce : IForce
+    public sealed class HookeForce : IGlobalForce
     {
         public void ApplyTo(Graph graph)
         {

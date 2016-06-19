@@ -1,6 +1,6 @@
 namespace Boing
 {
-    public interface IForce
+    public interface IGlobalForce
     {
         void ApplyTo(Graph graph);
     }

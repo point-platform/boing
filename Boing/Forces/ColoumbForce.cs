@@ -2,7 +2,7 @@
 
 namespace Boing.Forces
 {
-    public sealed class ColoumbForce : IForce
+    public sealed class ColoumbForce : IGlobalForce
     {
         public ColoumbForce(float repulsion = 20000)
         {

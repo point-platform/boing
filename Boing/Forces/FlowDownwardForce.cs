@@ -1,6 +1,6 @@
 namespace Boing.Forces
 {
-    public sealed class FlowDownwardForce : IForce
+    public sealed class FlowDownwardForce : IGlobalForce
     {
         public float Magnitude { get; set; }
 

@@ -3,7 +3,7 @@ namespace Boing.Forces
     /// <summary>
     /// An attraction towards the system's origin.
     /// </summary>
-    public sealed class OriginAttractionForce : IForce
+    public sealed class OriginAttractionForce : IGlobalForce
     {
         public float Stiffness { get; set; }
 

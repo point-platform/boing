@@ -42,7 +42,7 @@
     <Compile Include="Forces\KeepWithinBoundsForce.cs" />
     <Compile Include="Graph.cs" />
     <Compile Include="Forces\HookeForce.cs" />
-    <Compile Include="IForce.cs" />
+    <Compile Include="IGlobalForce.cs" />
     <Compile Include="LineSegment2f.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Forces\OriginAttractionForce.cs" />
