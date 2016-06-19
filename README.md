@@ -10,7 +10,7 @@ The easiest way to use this library is via its [NuGet package](https://www.nuget
 
 ## Usage
 
-Build a `Simulation` comprising `Node`s (point masses) connected via `Edge`s and forces.
+Build a `Simulation` comprising `Node`s (point masses) connected via `Spring`s and forces.
 
 Periodically update the simulation with a time step.
 
@@ -24,22 +24,22 @@ var node2 = new Node("Node2", mass: 2.0f);
 var simulation = new Simulation();
 simulation.Add(node1);
 simulation.Add(node2);
-simulation.Add(new Edge("Edge1", node1, node2));
+simulation.Add(new Spring("Spring1", node1, node2));
 
 // add various forces to the universe
-simulation.Add(new ColoumbForce());                       // nodes are attracted
-simulation.Add(new HookeForce());                         // edges are springs
+simulation.Add(new ColoumbForce());                       // nodes are attracted to one another
+simulation.Add(new HookeForce());                         // updates springs between nodes
 simulation.Add(new OriginAttractionForce(stiffness: 10)); // nodes move towards the origin
 simulation.Add(new FlowDownwardForce(magnitude: 100));    // gravity
 
 // set up a loop
 while (true)
 {
-  // compute a time step
-  simulation.Update(dt: 0.01f);
-  
-  // use the resulting positions somehow
-  Console.WriteLine($"Node1 at {node1.Position}, Node2 at {node2.Position}");
+    // compute a time step
+    simulation.Update(dt: 0.01f);
+
+    // use the resulting positions somehow
+    Console.WriteLine($"Node1 at {node1.Position}, Node2 at {node2.Position}");
 }
 ```
 

@@ -3,18 +3,18 @@ using System.Collections.Generic;
 
 namespace Boing
 {
-    // TODO axis-align force for edges
-    // TODO hysterisis spring force for edges
+    // TODO axis-align force for pairs of nodes
+    // TODO hysteresis spring force
 
     public sealed class Simulation
     {
         private readonly List<IGlobalForce> _forces = new List<IGlobalForce>();
-        private readonly Dictionary<string, Edge> _edgeById = new Dictionary<string, Edge>();
+        private readonly Dictionary<string, Spring> _springById = new Dictionary<string, Spring>();
         private readonly Dictionary<string, Node> _nodeById = new Dictionary<string, Node>();
 
         public IEnumerable<Node> Nodes => _nodeById.Values;
 
-        public IEnumerable<Edge> Edges => _edgeById.Values;
+        public IEnumerable<Spring> Springs => _springById.Values;
 
         public void Add(IGlobalForce force)
         {
@@ -41,7 +41,7 @@ namespace Boing
         public void Clear()
         {
             _nodeById.Clear();
-            _edgeById.Clear();
+            _springById.Clear();
         }
 
         public void Add(Node node)
@@ -52,27 +52,27 @@ namespace Boing
             _nodeById[node.Id] = node;
         }
 
-        public void Add(Edge edge)
+        public void Add(Spring spring)
         {
-            if (_edgeById.ContainsKey(edge.Id))
-                throw new ArgumentException("Edge with specified ID already exists.", nameof(edge));
+            if (_springById.ContainsKey(spring.Id))
+                throw new ArgumentException("Spring with specified ID already exists.", nameof(spring));
 
-            _edgeById[edge.Id] = edge;
+            _springById[spring.Id] = spring;
         }
 
         public void Remove(Node node)
         {
             _nodeById.Remove(node.Id);
-            foreach (var edge in new List<Edge>(Edges))
+            foreach (var spring in new List<Spring>(Springs))
             {
-                if (edge.Source.Id == node.Id || edge.Target.Id == node.Id)
-                    Remove(edge);
+                if (spring.Source.Id == node.Id || spring.Target.Id == node.Id)
+                    Remove(spring);
             }
         }
 
-        public void Remove(Edge edge)
+        public void Remove(Spring spring)
         {
-            _edgeById.Remove(edge.Id);
+            _springById.Remove(spring.Id);
         }
 
         public Node GetNodeById(string id)
@@ -81,10 +81,10 @@ namespace Boing
             return _nodeById.TryGetValue(id, out node) ? node : null;
         }
 
-        public Edge GetEdgeById(string id)
+        public Spring GetSpringById(string id)
         {
-            Edge edge;
-            return _edgeById.TryGetValue(id, out edge) ? edge : null;
+            Spring spring;
+            return _springById.TryGetValue(id, out spring) ? spring : null;
         }
     }
 }

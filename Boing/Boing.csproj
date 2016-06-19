@@ -37,7 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Forces\ColoumbForce.cs" />
-    <Compile Include="Edge.cs" />
+    <Compile Include="Spring.cs" />
     <Compile Include="Forces\FlowDownwardForce.cs" />
     <Compile Include="Forces\KeepWithinBoundsForce.cs" />
     <Compile Include="Simulation.cs" />

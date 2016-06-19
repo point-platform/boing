@@ -2,7 +2,7 @@
 
 namespace Boing
 {
-    public sealed class Edge
+    public sealed class Spring
     {
         public string Id { get; }
         public Node Source { get; }
@@ -10,7 +10,7 @@ namespace Boing
         public float Length { get; }
         public float K { get; }
 
-        public Edge(string id, Node source, Node target, float length = 100.0f, float k = 80.0f)
+        public Spring(string id, Node source, Node target, float length = 100.0f, float k = 80.0f)
         {
             Id = id;
             Source = source;
