@@ -13,7 +13,7 @@ namespace Boing
         public bool IsPinned { get; set; }
         public object Tag { get; set; }
         public Vector2f Position { get; set; }
-        public Vector2f Velocity { get; private set; }
+        public Vector2f Velocity { get; set; }
 
         public PointMass(float mass = 1.0f, float damping = 0.5f, Vector2f? position = null)
         {

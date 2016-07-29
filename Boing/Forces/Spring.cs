@@ -10,8 +10,8 @@ namespace Boing
     {
         public PointMass Source { get; }
         public PointMass Target { get; }
-        public float Length { get; }
-        public float K { get; }
+        public float Length { get; set; }
+        public float K { get; set; }
 
         public Spring(PointMass source, PointMass target, float length = 100.0f, float k = 80.0f)
         {
