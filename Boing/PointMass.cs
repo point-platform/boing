@@ -31,6 +31,12 @@ namespace Boing
             _force += force;
         }
 
+        public void ApplyImpulse(Vector2f impulse)
+        {
+            // Update velocity
+            Velocity += impulse/Mass;
+        }
+
         public void Update(float dt)
         {
             // Update velocity
