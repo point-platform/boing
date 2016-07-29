@@ -7,35 +7,37 @@ namespace Boing
     {
         private readonly Stopwatch _stopwatch = Stopwatch.StartNew();
         private readonly float _timeStepSeconds;
+        private readonly long _timeStepTicks;
         private readonly Simulation _simulation;
-        private float _leftOverTimeSeconds;
-        private float _lastTimeSeconds;
+        private long _leftOverTicks;
+        private long _lastTicks;
 
         public FixedTimeStepUpdater(Simulation simulation, float timeStepSeconds)
         {
             _simulation = simulation;
             _timeStepSeconds = timeStepSeconds;
+            _timeStepTicks = TimeSpan.FromSeconds(timeStepSeconds).Ticks;
         }
 
         public void Reset()
         {
-            _leftOverTimeSeconds = 0;
-            _lastTimeSeconds = 0;
+            _leftOverTicks = 0;
+            _lastTicks = 0;
             _stopwatch.Reset();
             _stopwatch.Start();
         }
 
         public void Update()
         {
-            var time = (float)_stopwatch.Elapsed.TotalSeconds;
-            var delta = time - _lastTimeSeconds;
-            _lastTimeSeconds = time;
+            var ticks = _stopwatch.Elapsed.Ticks;
+            var delta = ticks - _lastTicks;
+            _lastTicks = ticks;
 
-            delta += _leftOverTimeSeconds;
+            delta += _leftOverTicks;
 
-            var stepsThisUpdate = Math.Floor(delta/_timeStepSeconds);
+            var stepsThisUpdate = delta/_timeStepTicks;
 
-            _leftOverTimeSeconds = delta%_timeStepSeconds;
+            _leftOverTicks = delta%_timeStepTicks;
 
             for (var i = 0; i < stepsThisUpdate; i++)
                 _simulation.Update(_timeStepSeconds);
