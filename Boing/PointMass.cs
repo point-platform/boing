@@ -43,7 +43,7 @@ namespace Boing
             Debug.Assert(!float.IsNaN(Position.X) && !float.IsNaN(Position.Y), "!float.IsNaN(Position.X) && !float.IsNaN(Position.Y)");
             Debug.Assert(!float.IsInfinity(Position.X) && !float.IsInfinity(Position.Y), "!float.IsInfinity(Position.X) && !float.IsInfinity(Position.Y)");
 
-            // Clear acceleration
+            // Clear force
             _force = Vector2f.Zero;
         }
     }
