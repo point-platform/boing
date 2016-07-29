@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Boing
 {
@@ -41,6 +42,8 @@ namespace Boing
             var delta = target.Position - source.Position;
             var displacement = Length - delta.Norm();
             var direction = delta.Normalized();
+
+            Debug.Assert(!float.IsNaN(displacement), "!float.IsNaN(displacement)");
 
             if (!source.IsPinned && !target.IsPinned)
             {
