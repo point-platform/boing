@@ -9,16 +9,14 @@ namespace Boing
         internal HashSet<ILocalForce> LocalForces { get; } = new HashSet<ILocalForce>();
 
         public float Mass { get; set; }
-        public float Damping { get; set; }
         public bool IsPinned { get; set; }
         public object Tag { get; set; }
         public Vector2f Position { get; set; }
         public Vector2f Velocity { get; set; }
 
-        public PointMass(float mass = 1.0f, float damping = 0.5f, Vector2f? position = null)
+        public PointMass(float mass = 1.0f, Vector2f? position = null)
         {
             Mass = mass;
-            Damping = damping;
             Position = position ?? Vector2f.Random();
         }
 
@@ -41,7 +39,6 @@ namespace Boing
         {
             // Update velocity
             Velocity += _force/Mass*dt;
-            Velocity *= Damping;
 
             // Update position
             Position += Velocity*dt;
