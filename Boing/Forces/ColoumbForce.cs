@@ -17,32 +17,17 @@ namespace Boing
             {
                 foreach (var pointMass2 in simulation.PointMasses)
                 {
-                    if (ReferenceEquals(pointMass1, pointMass2))
+                    if (ReferenceEquals(pointMass1, pointMass2) || pointMass2.IsPinned)
                         continue;
 
-                    var delta = pointMass1.Position - pointMass2.Position;
+                    var delta = pointMass2.Position - pointMass1.Position;
                     var distance = delta.Norm();
 
                     // ReSharper disable once CompareOfFloatsByEqualityOperator
                     if (distance == 0.0f || distance > MaxDistance)
                         continue;
 
-                    var direction = delta.Normalized();
-
-                    if (!pointMass1.IsPinned && !pointMass2.IsPinned)
-                    {
-                        var force = direction*Repulsion/(distance*0.5f);
-                        pointMass1.ApplyForce(force);
-                        pointMass2.ApplyForce(force*-1);
-                    }
-                    else if (pointMass1.IsPinned && !pointMass2.IsPinned)
-                    {
-                        pointMass2.ApplyForce(direction*Repulsion/-distance);
-                    }
-                    else if (!pointMass1.IsPinned && pointMass2.IsPinned)
-                    {
-                        pointMass1.ApplyForce(direction*Repulsion/distance);
-                    }
+                    pointMass2.ApplyForce(delta*Repulsion/(distance*distance));
                 }
             }
         }
