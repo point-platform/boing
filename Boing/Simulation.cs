@@ -58,26 +58,17 @@ namespace Boing
         public void Remove(PointMass pointMass)
         {
             _pointMasses.Remove(pointMass);
-
-            foreach (var localForce in pointMass.LocalForces)
-                _localForces.Remove(localForce);
         }
 
         public void Add(ILocalForce localForce)
         {
             if (!_localForces.Add(localForce))
                 throw new ArgumentException("Already exists.", nameof(localForce));
-
-            foreach (var pointMass in localForce.AppliesToPointMasses)
-                pointMass.LocalForces.Add(localForce);
         }
 
         public void Remove(ILocalForce localForce)
         {
             _localForces.Remove(localForce);
-
-            foreach (var pointMass in localForce.AppliesToPointMasses)
-                pointMass.LocalForces.Remove(localForce);
         }
     }
 }

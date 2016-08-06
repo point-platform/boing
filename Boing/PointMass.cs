@@ -6,7 +6,6 @@ namespace Boing
     public sealed class PointMass
     {
         private Vector2f _force;
-        internal HashSet<ILocalForce> LocalForces { get; } = new HashSet<ILocalForce>();
 
         public float Mass { get; set; }
         public bool IsPinned { get; set; }

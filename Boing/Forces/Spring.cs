@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace Boing
@@ -20,8 +19,6 @@ namespace Boing
             Target = target;
             Length = length;
             K = k;
-
-            AppliesToPointMasses = new[] {source, target};
         }
 
         public LineSegment2f LineSegment => new LineSegment2f(Source.Position, Target.Position);
@@ -31,8 +28,6 @@ namespace Boing
             Math.Min(Source.Position.Y, Target.Position.Y),
             Math.Abs(Source.Position.X - Target.Position.X),
             Math.Abs(Source.Position.Y - Target.Position.Y));
-
-        public IEnumerable<PointMass> AppliesToPointMasses { get; }
 
         public void Apply()
         {

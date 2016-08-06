@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace Boing
 {
     // TODO new local force: axis-align force for pairs of point masses
@@ -7,8 +5,6 @@ namespace Boing
 
     public interface ILocalForce
     {
-        IEnumerable<PointMass> AppliesToPointMasses { get; }
-
         void Apply();
     }
 }
