@@ -1,15 +1,15 @@
-// ReSharper disable CompareOfFloatsByEqualityOperator
-
 namespace Boing
 {
     public sealed class ColoumbForce : IGlobalForce
     {
-        public ColoumbForce(float repulsion = 20000)
+        public ColoumbForce(float repulsion = 20000, float maxDistance = float.MaxValue)
         {
             Repulsion = repulsion;
+            MaxDistance = maxDistance;
         }
 
         public float Repulsion { get; set; }
+        public float MaxDistance { get; set; }
 
         public void ApplyTo(Simulation simulation)
         {
@@ -23,7 +23,8 @@ namespace Boing
                     var delta = pointMass1.Position - pointMass2.Position;
                     var distance = delta.Norm();
 
-                    if (distance == 0.0f)
+                    // ReSharper disable once CompareOfFloatsByEqualityOperator
+                    if (distance == 0.0f || distance > MaxDistance)
                         continue;
 
                     var direction = delta.Normalized();
