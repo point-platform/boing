@@ -35,9 +35,10 @@ simulation.Add(pointMass2);
 simulation.Add(new Spring(pointMass1, pointMass2));
 
 // add some global forces to the simulation
-simulation.Add(new ColoumbForce());                       // point masses are attracted to one another
+simulation.Add(new ColoumbForce());                       // point masses repel one another
 simulation.Add(new OriginAttractionForce(stiffness: 10)); // point masses move towards the origin
 simulation.Add(new FlowDownwardForce(magnitude: 100));    // gravity
+simulation.Add(new ViscousForce());                       // some resistance to motion
 
 // set up a loop
 while (true)
