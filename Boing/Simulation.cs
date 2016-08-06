@@ -25,11 +25,12 @@ namespace Boing
                 pointMass.Update(dt);
         }
 
-        public float GetTotalEnergy()
+        public float GetTotalKineticEnergy()
         {
             float sum = 0;
             foreach (var pointMass in _pointMasses)
             {
+                // 1/2 m v^2
                 var speed = pointMass.Velocity.Norm();
                 sum += 0.5f*pointMass.Mass*speed*speed;
             }
