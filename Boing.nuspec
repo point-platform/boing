@@ -8,7 +8,7 @@
     <owners>Drew Noakes, Krzysztof Dul</owners>
     <licenseUrl>https://www.apache.org/licenses/LICENSE-2.0.html</licenseUrl>
     <projectUrl>https://github.com/drewnoakes/boing</projectUrl>
-    <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
+    <iconUrl>https://raw.githubusercontent.com/drewnoakes/boing/master/Resources/logo-square-512px.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Simple physics sandbox for .NET</description>
     <releaseNotes>Initial release.</releaseNotes>
