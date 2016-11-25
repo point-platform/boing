@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		Boing.nuspec = Boing.nuspec
 		LICENSE = LICENSE
+		Resources\logo-square-256px.png = Resources\logo-square-256px.png
+		Resources\logo-square-512px.png = Resources\logo-square-512px.png
+		Resources\logo-square.svg = Resources\logo-square.svg
+		Resources\logo.svg = Resources\logo.svg
 		README.md = README.md
 	EndProjectSection
 EndProject
