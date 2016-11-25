@@ -1,3 +1,5 @@
+![boing logo](https://cdn.rawgit.com/drewnoakes/boing/master/Resources/logo.svg)
+
 [![Boing NuGet version](https://img.shields.io/nuget/v/Boing.svg)](https://www.nuget.org/packages/Boing/)
 
 A simple library for 2D physics simulations in .NET.
