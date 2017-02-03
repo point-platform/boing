@@ -1,0 +1,44 @@
+{
+  "id": "Boing",
+  "title": "Boing",
+  "version": "1.0.0-*",
+  "copyright": "Copyright Drew Noakes, Krzysztof Dul 2015-2017",
+  "authors": [ "Drew Noakes", "Krzysztof Dul" ],
+  "description": "A simple library for 2D physics simulations in .NET.",
+
+  "buildOptions": {
+    "debugType": "portable",
+    "xmlDoc": true,
+    "optimize": true
+  },
+
+  "packOptions": {
+    "owners": [ "Drew Noakes", "Krzysztof Dul" ],
+    "iconUrl": "https://raw.githubusercontent.com/drewnoakes/boing/master/Resources/logo-square-512px.png",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.html",
+    "projectUrl": "https://github.com/drewnoakes/boing",
+    "requireLicenseAcceptance": false,
+    "tags": [
+      "Physics simulation",
+      "Physics",
+      "Physics engine",
+      "Physics simulation library",
+      "Simulation"
+    ],
+    "summary": "A simple library for 2D physics simulations in .NET.",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/drewnoakes/boing.git"
+    }
+  },
+
+  "dependencies": {},
+  "frameworks": {
+    "net35": {},
+    "netstandard1.0": {
+      "dependencies": {
+        "NETStandard.Library": "1.6.0"
+      }
+    }
+  }
+}

@@ -3,6 +3,7 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/xsovru9f2mmib616?svg=true)](https://ci.appveyor.com/project/drewnoakes/boing)
 [![Boing NuGet version](https://img.shields.io/nuget/v/Boing.svg)](https://www.nuget.org/packages/Boing/)
+[![Boing NuGet prerelease version](https://img.shields.io/nuget/vpre/Boing.svg)](https://www.nuget.org/packages/Boing/)
 
 A simple library for 2D physics simulations in .NET.
 
@@ -11,6 +12,8 @@ A simple library for 2D physics simulations in .NET.
 The easiest way to use this library is via its [NuGet package](https://www.nuget.org/packages/Boing/):
 
     PM> Install-Package Boing
+
+Boing supports `net35` (.NET Framework 3.5 and above) and `netstandard1.0` (.NET Standard 1.0 and above) for .NET Core and other platforms.
 
 ## Usage
 
