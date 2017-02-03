@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Boing")]
-[assembly: AssemblyCopyright("Copyright © Drew Noakes, Krzysztof Dul 2015-2016")]
+[assembly: AssemblyCopyright("Copyright © Drew Noakes, Krzysztof Dul 2015-2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
