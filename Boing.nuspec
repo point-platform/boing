@@ -11,7 +11,7 @@
     <iconUrl>https://raw.githubusercontent.com/drewnoakes/boing/master/Resources/logo-square-512px.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Simple physics sandbox for .NET</description>
-    <releaseNotes>Initial release.</releaseNotes>
+    <!--<releaseNotes>Initial release.</releaseNotes>-->
     <copyright>Copyright Drew Noakes, Krzysztof Dul 2015-2016</copyright>
     <tags>physics simulation</tags>
   </metadata>
