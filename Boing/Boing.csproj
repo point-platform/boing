@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>A simple library for 2D physics simulations in .NET.</Description>
+    <Copyright>Copyright Drew Noakes, Krzysztof Dul 2015-2017</Copyright>
+    <AssemblyTitle>Boing</AssemblyTitle>
+    <Authors>Drew Noakes;Krzysztof Dul</Authors>
+    <TargetFrameworks>net35;netstandard1.0</TargetFrameworks>
+    <DebugType>portable</DebugType>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyName>Boing</AssemblyName>
+    <PackageId>Boing</PackageId>
+    <PackageTags>Physics simulation;Physics;Physics engine;Physics simulation library;Simulation</PackageTags>
+    <PackageIconUrl>https://raw.githubusercontent.com/drewnoakes/boing/master/Resources/logo-square-512px.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/drewnoakes/boing</PackageProjectUrl>
+    <PackageLicenseUrl>https://www.apache.org/licenses/LICENSE-2.0.html</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/drewnoakes/boing.git</RepositoryUrl>
+    <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard1.0' ">1.6.0</NetStandardImplicitPackageVersion>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net35' ">
+    <Reference Include="System" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+</Project>

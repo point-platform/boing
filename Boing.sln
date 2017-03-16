@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F6B981AF-06BE-409F-8D26-6803E9A9886A}"
 	ProjectSection(SolutionItems) = preProject
@@ -14,9 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Boing", "Boing\Boing.xproj", "{C4FAC4BA-CC6A-4FFB-ABEE-CB67E23745DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boing", "Boing\Boing.csproj", "{C4FAC4BA-CC6A-4FFB-ABEE-CB67E23745DA}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Boing.Tests", "Boing.Tests\Boing.Tests.xproj", "{CF371345-F529-46F0-AD32-4FFB6759C091}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boing.Tests", "Boing.Tests\Boing.Tests.csproj", "{CF371345-F529-46F0-AD32-4FFB6759C091}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
