@@ -51,13 +51,31 @@ var simulation = new Simulation
     new FlowDownwardForce(magnitude: 100)
 };
 
-while (true)
+void RunAtMaxSpeed()
 {
-    // update the simulation
-    simulation.Update(dt: 0.01f);
+    while (true)
+    {
+        // update the simulation
+        simulation.Update(dt: 0.01f);
 
-    // TODO use the resulting positions somehow
-    Console.WriteLine($"PointMass1 at {pointMass1.Position}, PointMass2 at {pointMass2.Position}");
+        // TODO use the resulting positions somehow
+        Console.WriteLine($"PointMass1 at {pointMass1.Position}, PointMass2 at {pointMass2.Position}");
+    }
+}
+
+async Task RunAtEvenRateAsync()
+{
+    var updater = new FixedTimeStepUpdater(simulation, timeStepSeconds: 1f/200);
+
+    while (true)
+    {
+        updater.Update();
+
+        // TODO use the resulting positions somehow
+        Console.WriteLine($"PointMass1 at {pointMass1.Position}, PointMass2 at {pointMass2.Position}");
+
+        await Task.Delay(millisecondsDelay: 1/60);
+    }
 }
 
 ```
