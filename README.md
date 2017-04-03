@@ -27,32 +27,37 @@ Periodically update the simulation with a time step.
 ## Example
 
 ```csharp
-// create a new simulation
-var simulation = new Simulation();
-
 // create some point masses
 var pointMass1 = new PointMass(mass: 1.0f);
 var pointMass2 = new PointMass(mass: 2.0f);
 
-simulation.Add(pointMass1);
-simulation.Add(pointMass2);
+// create a new simulation
+var simulation = new Simulation
+{
+    // add the point masses
+    pointMass1,
+    pointMass2,
 
-// create a spring between these point masses
-simulation.Add(new Spring(pointMass1, pointMass2));
+    // create a spring between these point masses
+    new Spring(pointMass1, pointMass2, length: 20),
 
-// add some global forces to the simulation
-simulation.Add(new ColoumbForce());                       // point masses repel one another
-simulation.Add(new OriginAttractionForce(stiffness: 10)); // point masses move towards the origin
-simulation.Add(new FlowDownwardForce(magnitude: 100));    // gravity
-simulation.Add(new ViscousForce());                       // some resistance to motion
+    // point masses are attracted to one another
+    new ColoumbForce(),
 
-// set up a loop
+    // point masses move towards the origin
+    new OriginAttractionForce(stiffness: 10),
+
+    // gravity
+    new FlowDownwardForce(magnitude: 100)
+};
+
 while (true)
 {
-    // compute a time step
+    // update the simulation
     simulation.Update(dt: 0.01f);
 
-    // use the resulting positions somehow
+    // TODO use the resulting positions somehow
     Console.WriteLine($"PointMass1 at {pointMass1.Position}, PointMass2 at {pointMass2.Position}");
 }
+
 ```
