@@ -8,6 +8,8 @@
     <TargetFrameworks>net35;netstandard1.0</TargetFrameworks>
     <DebugType>portable</DebugType>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <IncludeSource>true</IncludeSource>
     <AssemblyName>Boing</AssemblyName>
     <PackageId>Boing</PackageId>
     <PackageTags>Physics simulation;Physics;Physics engine;Physics simulation library;Simulation</PackageTags>
