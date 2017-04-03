@@ -3,7 +3,6 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/xsovru9f2mmib616?svg=true)](https://ci.appveyor.com/project/drewnoakes/boing)
 [![Boing NuGet version](https://img.shields.io/nuget/v/Boing.svg)](https://www.nuget.org/packages/Boing/)
-[![Boing NuGet prerelease version](https://img.shields.io/nuget/vpre/Boing.svg)](https://www.nuget.org/packages/Boing/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 A simple library for 2D physics simulations in .NET.
