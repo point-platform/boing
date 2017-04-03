@@ -17,11 +17,12 @@
 #endregion
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Boing
 {
-    public sealed class Simulation
+    public sealed class Simulation : IEnumerable
     {
         private readonly HashSet<PointMass> _pointMasses = new HashSet<PointMass>();
         private readonly HashSet<IForce> _forces = new HashSet<IForce>();
@@ -77,6 +78,11 @@ namespace Boing
         public void Remove(PointMass pointMass)
         {
             _pointMasses.Remove(pointMass);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotSupportedException($"{nameof(Simulation)} only implements {nameof(IEnumerable)} to enable C# object initialisers.");
         }
     }
 }
