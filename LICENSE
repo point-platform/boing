@@ -187,8 +187,7 @@
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2002-2016 Drew Noakes
-   Copyright 2014 Imazen LLC (initial conversion from Java to C#)
+   Copyright 2015-2017 Drew Noakes, Krzysztof Dul
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -204,11 +203,7 @@
 
 ------------------------------------------------------------------------------
 
-MetadataExtractor depends upon the following 3rd party packages with their own
+Boing depends upon the following 3rd party packages with their own
 license terms:
 
-- XmpCore (runtime) licensed under BSD
-
-- JetBrains.Annotations (design time) licensed under Apache 2.0
-
-- xUnit (design time) licensed under Apache 2.0
+- xunit, licensed under Apache 2.0 (used during development)
