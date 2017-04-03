@@ -20,7 +20,7 @@ using System;
 
 namespace Boing
 {
-    public sealed class KeepWithinBoundsForce : IGlobalForce
+    public sealed class KeepWithinBoundsForce : IForce
     {
         public float MaxX { get; set; }
         public float MaxY { get; set; }

@@ -18,7 +18,7 @@
 
 namespace Boing
 {
-    public sealed class ColoumbForce : IGlobalForce
+    public sealed class ColoumbForce : IForce
     {
         public ColoumbForce(float repulsion = 20000, float maxDistance = float.MaxValue)
         {

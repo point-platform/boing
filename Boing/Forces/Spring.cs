@@ -24,7 +24,7 @@ namespace Boing
     /// <summary>
     /// Models a linear spring between two <see cref="PointMass"/> instances according to Hooke's law.
     /// </summary>
-    public sealed class Spring : ILocalForce
+    public sealed class Spring : IForce
     {
         public PointMass Source { get; }
         public PointMass Target { get; }
@@ -47,7 +47,7 @@ namespace Boing
             Math.Abs(Source.Position.X - Target.Position.X),
             Math.Abs(Source.Position.Y - Target.Position.Y));
 
-        public void Apply()
+        public void ApplyTo(Simulation simulation)
         {
             var source = Source;
             var target = Target;

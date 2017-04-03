@@ -21,7 +21,7 @@ namespace Boing
     /// <summary>
     /// An attraction towards the system's origin.
     /// </summary>
-    public sealed class OriginAttractionForce : IGlobalForce
+    public sealed class OriginAttractionForce : IForce
     {
         public float Stiffness { get; set; }
 

@@ -20,8 +20,7 @@ Boing supports `net35` (.NET Framework 3.5 and above) and `netstandard1.0` (.NET
 Build a `Simulation` comprising:
 
 - `PointMass` objects
-- Local forces (such as `Spring`s) 
-- Global forces (such as gravity or Coloumb forces)
+- Forces such as springs, gravity, Coloumb, viscosity
 
 Periodically update the simulation with a time step.
 

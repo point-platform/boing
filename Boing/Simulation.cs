@@ -24,20 +24,15 @@ namespace Boing
     public sealed class Simulation
     {
         private readonly HashSet<PointMass> _pointMasses = new HashSet<PointMass>();
-        private readonly HashSet<ILocalForce> _localForces = new HashSet<ILocalForce>();
-        private readonly List<IGlobalForce> _globalForces = new List<IGlobalForce>();
+        private readonly HashSet<IForce> _forces = new HashSet<IForce>();
 
         public IEnumerable<PointMass> PointMasses => _pointMasses;
-        public IEnumerable<ILocalForce> LocalForces => _localForces;
-        public IEnumerable<IGlobalForce> GlobalForces => _globalForces;
+        public IEnumerable<IForce> Forces => _forces;
 
         public void Update(float dt)
         {
-            foreach (var force in _globalForces)
+            foreach (var force in _forces)
                 force.ApplyTo(this);
-
-            foreach (var force in _localForces)
-                force.Apply();
 
             foreach (var pointMass in _pointMasses)
                 pointMass.Update(dt);
@@ -46,6 +41,7 @@ namespace Boing
         public float GetTotalKineticEnergy()
         {
             float sum = 0;
+            // ReSharper disable once LoopCanBeConvertedToQuery
             foreach (var pointMass in _pointMasses)
             {
                 // 1/2 m v^2
@@ -58,13 +54,18 @@ namespace Boing
         public void Clear()
         {
             _pointMasses.Clear();
-            _localForces.Clear();
-            _globalForces.Clear();
+            _forces.Clear();
         }
 
-        public void Add(IGlobalForce force)
+        public void Add(IForce force)
         {
-            _globalForces.Add(force);
+            if (!_forces.Add(force))
+                throw new ArgumentException("Already exists.", nameof(force));
+        }
+
+        public void Remove(IForce force)
+        {
+            _forces.Remove(force);
         }
 
         public void Add(PointMass pointMass)
@@ -76,17 +77,6 @@ namespace Boing
         public void Remove(PointMass pointMass)
         {
             _pointMasses.Remove(pointMass);
-        }
-
-        public void Add(ILocalForce localForce)
-        {
-            if (!_localForces.Add(localForce))
-                throw new ArgumentException("Already exists.", nameof(localForce));
-        }
-
-        public void Remove(ILocalForce localForce)
-        {
-            _localForces.Remove(localForce);
         }
     }
 }

@@ -18,7 +18,7 @@
 
 namespace Boing
 {
-    public sealed class FlowDownwardForce : IGlobalForce
+    public sealed class FlowDownwardForce : IForce
     {
         /// <summary>
         /// The magnitude of the downward force, in Newtons.

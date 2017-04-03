@@ -21,8 +21,15 @@ namespace Boing
     // TODO new local force: axis-align force for pairs of point masses
     // TODO new local force: hysteresis spring force
 
-    public interface ILocalForce
+    /// <summary>
+    /// A force that potentially applies to every <see cref="PointMass"/> in the <see cref="Simulation"/>.
+    /// </summary>
+    public interface IForce
     {
-        void Apply();
+        /// <summary>
+        /// Update the simulation
+        /// </summary>
+        /// <param name="simulation"></param>
+        void ApplyTo(Simulation simulation);
     }
 }

@@ -18,7 +18,7 @@
 
 namespace Boing
 {
-    public sealed class ViscousForce : IGlobalForce
+    public sealed class ViscousForce : IForce
     {
         public float Coefficient { get; set; }
 
