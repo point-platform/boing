@@ -23,9 +23,9 @@ namespace Boing
         public Vector2f From { get; }
         public Vector2f To { get; }
 
-        public LineSegment2f(Vector2f @from, Vector2f to)
+        public LineSegment2f(Vector2f from, Vector2f to)
         {
-            From = @from;
+            From = from;
             To = to;
         }
 
