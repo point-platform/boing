@@ -20,13 +20,13 @@ namespace Boing
 {
     public sealed class ColoumbForce : IForce
     {
-        public ColoumbForce(float repulsion = 20000, float maxDistance = float.MaxValue)
+        public ColoumbForce(float scale = 20_000, float maxDistance = float.MaxValue)
         {
-            Repulsion = repulsion;
+            Scale = scale;
             MaxDistance = maxDistance;
         }
 
-        public float Repulsion { get; set; }
+        public float Scale { get; set; }
         public float MaxDistance { get; set; }
 
         /// <inheritdoc />
@@ -46,7 +46,7 @@ namespace Boing
                     if (distance == 0.0f || distance > MaxDistance)
                         continue;
 
-                    pointMass2.ApplyForce(delta*Repulsion/(distance*distance));
+                    pointMass2.ApplyForce(delta*Scale/(distance*distance));
                 }
             }
         }
