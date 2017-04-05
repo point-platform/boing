@@ -34,12 +34,14 @@ namespace Boing
         /// <inheritdoc />
         void IForce.ApplyTo(Simulation simulation)
         {
+            var force = new Vector2f(0, Magnitude);
+            
             foreach (var pointMass in simulation.PointMasses)
             {
                 if (pointMass.IsPinned)
                     continue;
 
-                pointMass.ApplyForce(new Vector2f(0, Magnitude));
+                pointMass.ApplyForce(force);
             }
         }
     }
