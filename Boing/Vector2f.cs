@@ -37,6 +37,12 @@ namespace Boing
 
         public Vector2f Normalized() => this/Norm();
 
+        public Vector2f Normalized(out float norm)
+        {
+            norm = Norm();
+            return this/norm;
+        }
+
         public bool HasNaN => float.IsNaN(X) || float.IsNaN(Y);
 
         public bool HasInfinity => float.IsInfinity(X) || float.IsInfinity(Y);
