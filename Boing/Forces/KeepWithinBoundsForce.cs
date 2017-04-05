@@ -20,12 +20,41 @@ using System;
 
 namespace Boing
 {
+    /// <summary>
+    /// A force that works to keep point masses within a given rectangular boundary.
+    /// </summary>
+    /// <remarks>
+    /// No force is exerted on point masses within <see cref="Bounds"/>.
+    /// As a point moves outside the boundary, the force exerted back towards the boundary increases exponentially
+    /// (with power determined by <see cref="Magnitude"/>). Forces are capped at <see cref="MaximumForce"/>
+    /// to prevent destabilising the simulation.
+    /// </remarks>
     public sealed class KeepWithinBoundsForce : IForce
     {
+        /// <summary>
+        /// Gets and sets the rectangular bounds to which point masses are constrained.
+        /// </summary>
         public Rectangle2f Bounds { get; set; }
+
+        /// <summary>
+        /// Gets and sets the exponential power to use when computing the force to apply
+        /// to a point mass found outside <see cref="Bounds"/>, based on its distance from
+        /// the boundary.
+        /// </summary>
         public float Magnitude { get; set; }
+
+        /// <summary>
+        /// Gets and sets an upper limit on the force applied to particles, in Newtons,
+        /// to prevent destabilising the simulation.
+        /// </summary>
         public float MaximumForce { get; set; }
 
+        /// <summary>
+        /// Initialises a new instance of <see cref="KeepWithinBoundsForce"/>.
+        /// </summary>
+        /// <param name="bounds">The bounds to which point masses are constrained.</param>
+        /// <param name="magnitude"></param>
+        /// <param name="maximumForce">The upper limit on the force applied to particles. The default value is 1000 Newtonss.</param>
         public KeepWithinBoundsForce(Rectangle2f bounds, float magnitude = 3.0f, float maximumForce = 1000.0f)
         {
             Bounds = bounds;
