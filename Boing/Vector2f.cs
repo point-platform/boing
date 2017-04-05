@@ -64,71 +64,25 @@ namespace Boing
 
         #region Equality / Hashing
 
-        public bool Equals(Vector2f other)
-        {
-            return X.Equals(other.X) && Y.Equals(other.Y);
-        }
+        public bool Equals(Vector2f other) => X.Equals(other.X) && Y.Equals(other.Y);
 
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj))
-                return false;
-            return obj is Vector2f v && Equals(v);
-        }
+        public override bool Equals(object obj) => obj is Vector2f v && Equals(v);
 
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                return (X.GetHashCode()*397) ^ Y.GetHashCode();
-            }
-        }
+        public override int GetHashCode() => unchecked((X.GetHashCode()*397) ^ Y.GetHashCode());
 
-        public static bool operator ==(Vector2f a, Vector2f b)
-        {
-            return a.X == b.X && a.Y == b.Y;
-        }
-
-        public static bool operator !=(Vector2f a, Vector2f b)
-        {
-            return a.X != b.X || a.Y != b.Y;
-        }
+        public static bool operator ==(Vector2f a, Vector2f b) => a.X == b.X && a.Y == b.Y;
+        public static bool operator !=(Vector2f a, Vector2f b) => a.X != b.X || a.Y != b.Y;
 
         #endregion
 
         #region Arithmetic operators
 
-        public static Vector2f operator +(Vector2f a, Vector2f b)
-        {
-            return new Vector2f(a.X + b.X, a.Y + b.Y);
-        }
-
-        public static Vector2f operator -(Vector2f a, Vector2f b)
-        {
-            return new Vector2f(a.X - b.X, a.Y - b.Y);
-        }
-
-        public static Vector2f operator *(Vector2f a, float b)
-        {
-            return new Vector2f(a.X*b, a.Y*b);
-        }
-
-        public static Vector2f operator *(float a, Vector2f b)
-        {
-            return new Vector2f(b.X*a, b.Y*a);
-        }
-
-        public static Vector2f operator /(Vector2f a, float b)
-        {
-            return b == 0.0f
-                ? Zero
-                : new Vector2f(a.X/b, a.Y/b);
-        }
-
-        public static Vector2f operator -(Vector2f v)
-        {
-            return new Vector2f(-v.X, -v.Y);
-        }
+        public static Vector2f operator +(Vector2f a, Vector2f b) => new Vector2f(a.X + b.X, a.Y + b.Y);
+        public static Vector2f operator -(Vector2f a, Vector2f b) => new Vector2f(a.X - b.X, a.Y - b.Y);
+        public static Vector2f operator *(Vector2f a, float b) => new Vector2f(a.X*b, a.Y*b);
+        public static Vector2f operator *(float a, Vector2f b) => new Vector2f(b.X*a, b.Y*a);
+        public static Vector2f operator /(Vector2f a, float b) => b == 0.0f ? Zero : new Vector2f(a.X/b, a.Y/b);
+        public static Vector2f operator -(Vector2f v) => new Vector2f(-v.X, -v.Y);
 
         #endregion
 
