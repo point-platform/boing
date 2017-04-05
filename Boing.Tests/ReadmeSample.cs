@@ -17,6 +17,7 @@
 #endregion
 
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Boing.Tests
@@ -61,23 +62,23 @@ namespace Boing.Tests
                 }
             }
 
-            async Task RunAtEvenRateAsync()
+            async Task RunAtEvenRateAsync(CancellationToken token)
             {
                 var updater = new FixedTimeStepUpdater(simulation, timeStepSeconds: 1f/200);
 
-                while (true)
+                while (!token.IsCancellationRequested)
                 {
                     updater.Update();
 
                     // TODO render frame
 
-                    await Task.Delay(millisecondsDelay: 1/60);
+                    await Task.Delay(millisecondsDelay: 1/60, cancellationToken: token);
                 }
             }
 
             // Reference methods to remove IDE warnings
             RunAtMaxSpeed();
-            RunAtEvenRateAsync().Wait();
+            RunAtEvenRateAsync(CancellationToken.None).Wait();
         }
     }
 }

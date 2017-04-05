@@ -63,18 +63,18 @@ void RunAtMaxSpeed()
     }
 }
 
-async Task RunAtEvenRateAsync()
+async Task RunAtEvenRateAsync(CancellationToken token)
 {
     var updater = new FixedTimeStepUpdater(simulation, timeStepSeconds: 1f/200);
 
-    while (true)
+    while (!token.IsCancellationRequested)
     {
         updater.Update();
 
         // TODO use the resulting positions somehow
         Console.WriteLine($"PointMass1 at {pointMass1.Position}, PointMass2 at {pointMass2.Position}");
 
-        await Task.Delay(millisecondsDelay: 1/60);
+        await Task.Delay(millisecondsDelay: 1/60, cancellationToken: token);
     }
 }
 
