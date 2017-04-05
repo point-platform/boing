@@ -41,6 +41,11 @@ namespace Boing
             : this(new Vector2f(x, y), new Vector2f(x + width, y + height))
         {}
 
+        public float Left => Min.X;
+        public float Right => Max.X;
+        public float Top => Min.Y;
+        public float Bottom => Max.Y;
+
         public Vector2f TopLeft => Min;
         public Vector2f TopRight => new Vector2f(Max.X, Min.Y);
         public Vector2f BottomLeft => new Vector2f(Min.X, Max.Y);
