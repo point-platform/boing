@@ -18,15 +18,57 @@
 
 namespace Boing
 {
+    /// <summary>
+    /// A force between point masses that follows an inverse square law.
+    /// </summary>
+    /// <remarks>
+    /// All pairs of unpinned point masses in the simulation will
+    /// attract or repel one another with equal and opposite force.
+    /// <para />
+    /// The force is proportional to the inverse square of the distance, meaning it
+    /// is strongest for close particles, and the intensity diminishes quadratically
+    /// as distance increases.
+    /// <para />
+    /// The intensity of this effect can be linearly scaled using <see cref="Scale"/>.
+    /// <para />
+    /// As an optimisation, you may set the <see cref="MaxDistance"/> property to
+    /// prevent this force applying over some distance threshold. By default this is
+    /// 20,000.
+    /// <para />
+    /// See https://en.wikipedia.org/wiki/Coulomb%27s_law for more information.
+    /// </remarks>
     public sealed class ColoumbForce : IForce
     {
+        /// <summary>
+        /// Initialises a new instance of <see cref="ColoumbForce"/>.
+        /// </summary>
+        /// <param name="scale">The <see cref="Scale"/> to use. The default value is 20,000. Positive values cause repulsion, while negative values cause attraction.</param>
+        /// <param name="maxDistance">The <see cref="MaxDistance"/> to use. The default value is <see cref="float.MaxValue"/>.</param>
         public ColoumbForce(float scale = 20_000, float maxDistance = float.MaxValue)
         {
             Scale = scale;
             MaxDistance = maxDistance;
         }
 
+        /// <summary>
+        /// Gets and sets a value that linearly scales the intensity of the force applied between pairs of point masses.
+        /// </summary>
+        /// <remarks>
+        /// This value is equivalent to the force, in Newtons, applied to point masses one unit apart.
+        /// <para />
+        /// Positive values cause repulsion, while negative values cause attraction.
+        /// This value may be safely modified while the simulation is running.
+        /// </remarks>
         public float Scale { get; set; }
+
+        /// <summary>
+        /// Gets and sets the maximum distance over which the force applies.
+        /// Point masses separated by distances greater than this threshold will not have a force applied.
+        /// </summary>
+        /// <remarks>
+        /// A value less than or equal to zero effectively disables this force.
+        /// This value may be safely modified while the simulation is running.
+        /// </remarks>
         public float MaxDistance { get; set; }
 
         /// <inheritdoc />
