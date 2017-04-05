@@ -32,6 +32,9 @@ namespace Boing
         /// <inheritdoc />
         void IForce.ApplyTo(Simulation simulation)
         {
+            if (MaxDistance <= 0)
+                return;
+
             foreach (var pointMass1 in simulation.PointMasses)
             {
                 foreach (var pointMass2 in simulation.PointMasses)
