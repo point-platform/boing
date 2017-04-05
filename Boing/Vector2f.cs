@@ -119,6 +119,11 @@ namespace Boing
                 : new Vector2f(a.X/b, a.Y/b);
         }
 
+        public static Vector2f operator -(Vector2f v)
+        {
+            return new Vector2f(-v.X, -v.Y);
+        }
+
         #endregion
 
         public override string ToString() => $"X: {X}, Y: {Y}";
