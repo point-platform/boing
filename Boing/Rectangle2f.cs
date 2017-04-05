@@ -21,11 +21,27 @@ using System.Collections.Generic;
 
 namespace Boing
 {
+    /// <summary>
+    /// An axis-aligned rectangular area in a two dimensional coordinate system.
+    /// </summary>
     public struct Rectangle2f
     {
+        /// <summary>
+        /// The minimum point in the rectangle, which is also the top left corner.
+        /// </summary>
         public Vector2f Min { get; }
+
+        /// <summary>
+        /// The maximum point in the rectangle, which is also the bottom right corner.
+        /// </summary>
         public Vector2f Max { get; }
 
+        /// <summary>
+        /// Initialises a new instance of <see cref="Rectangle2f"/> from the pair of its minimum and maximum points.
+        /// </summary>
+        /// <param name="min">The minimum point, which is also the top left corner.</param>
+        /// <param name="max">The maximum point, which is also the bottom right corner.</param>
+        /// <exception cref="ArgumentException"></exception>
         public Rectangle2f(Vector2f min, Vector2f max)
         {
             if (min.X > max.X)
@@ -37,23 +53,46 @@ namespace Boing
             Max = max;
         }
 
+        /// <summary>
+        /// Initialises a new instance of <see cref="Rectangle2f"/> from its minimum point, and a width and height.
+        /// </summary>
+        /// <param name="x">The x value of the minimum point.</param>
+        /// <param name="y">The y value of the minimum point.</param>
+        /// <param name="width">The width of the rectangle.</param>
+        /// <param name="height">The height of the rectangle.</param>
         public Rectangle2f(float x, float y, float width, float height)
             : this(new Vector2f(x, y), new Vector2f(x + width, y + height))
         {}
 
+        /// <summary>Gets the x value of the left edge.</summary>
         public float Left => Min.X;
+        /// <summary>Gets the x value of the right edge.</summary>
         public float Right => Max.X;
+        /// <summary>Gets the y value of the top edge.</summary>
         public float Top => Min.Y;
+        /// <summary>Gets the y value of the bottom edge.</summary>
         public float Bottom => Max.Y;
 
+        /// <summary>Gets the width of the rectangle.</summary>
         public float Width => Right - Left;
+        /// <summary>Gets the height of the rectangle.</summary>
         public float Height => Bottom - Top;
 
+        /// <summary> Gets the position of the top left corner. </summary>
         public Vector2f TopLeft => Min;
+        /// <summary> Gets the position of the top right corner. </summary>
         public Vector2f TopRight => new Vector2f(Max.X, Min.Y);
+        /// <summary> Gets the position of the bottom left corner. </summary>
         public Vector2f BottomLeft => new Vector2f(Min.X, Max.Y);
+        /// <summary> Gets the position of the bottom right corner. </summary>
         public Vector2f BottomRight => Max;
 
+        /// <summary>
+        /// Enumerates the four edges of the rectangle.
+        /// </summary>
+        /// <remarks>
+        /// Edges are produce in clockwise order: top, right, bottom, left.
+        /// </remarks>
         public IEnumerable<LineSegment2f> Edges
         {
             get
