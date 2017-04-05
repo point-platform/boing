@@ -20,15 +20,24 @@ namespace Boing
 {
     public struct LineSegment2f
     {
+        /// <summary>Gets the starting point of the line segment.</summary>
         public Vector2f From { get; }
+        /// <summary>Gets the ending point of the line segment.</summary>
         public Vector2f To { get; }
 
+        /// <summary>
+        /// Initialises a new instance of <see cref="LineSegment2f"/>.
+        /// </summary>
+        /// <param name="from">The starting point of the line segment</param>
+        /// <param name="to">The ending point of the line segment</param>
         public LineSegment2f(Vector2f from, Vector2f to)
         {
             From = from;
             To = to;
         }
 
+        /// <summary>Gets a vector representing the difference of the line segment's endpoints.</summary>
+        /// <remarks>Computed as <see cref="To"/> minus <see cref="From"/>.</remarks>
         public Vector2f Delta => new Vector2f(To.X - From.X, To.Y - From.Y);
 
         /// <summary>
