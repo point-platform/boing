@@ -33,14 +33,18 @@ namespace Boing
         /// <inheritdoc />
         void IForce.ApplyTo(Simulation simulation)
         {
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
+            if (Stiffness == 0)
+                return;
+
+            var f = -Stiffness;
+
             foreach (var pointMass in simulation.PointMasses)
             {
                 if (pointMass.IsPinned)
                     continue;
 
-                var magnitude = -pointMass.Position.Norm()*Stiffness;
-
-                pointMass.ApplyForce(pointMass.Position.Normalized()*magnitude);
+                pointMass.ApplyForce(f*pointMass.Position);
             }
         }
     }
