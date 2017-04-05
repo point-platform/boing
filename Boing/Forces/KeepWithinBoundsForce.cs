@@ -22,13 +22,13 @@ namespace Boing
 {
     public sealed class KeepWithinBoundsForce : IForce
     {
-        public float MaxX { get; set; }
-        public float MaxY { get; set; }
+        public Rectangle2f Bounds { get; set; }
         public float Magnitude { get; set; }
         public float MaximumForce { get; set; }
 
-        public KeepWithinBoundsForce(float magnitude = 3.0f, float maximumForce = 1000.0f)
+        public KeepWithinBoundsForce(Rectangle2f bounds, float magnitude = 3.0f, float maximumForce = 1000.0f)
         {
+            Bounds = bounds;
             Magnitude = magnitude;
             MaximumForce = maximumForce;
         }
@@ -41,31 +41,31 @@ namespace Boing
                 if (pointMass.IsPinned)
                     continue;
 
-                if (pointMass.Position.X > MaxX)
+                if (pointMass.Position.X > Bounds.Right)
                 {
-                    var force = (float)Math.Pow(pointMass.Position.X - MaxX, Magnitude);
+                    var force = (float)Math.Pow(pointMass.Position.X - Bounds.Right, Magnitude);
                     if (force > MaximumForce)
                         force = MaximumForce;
                     pointMass.ApplyForce(new Vector2f(-force, 0));
                 }
-                else if (pointMass.Position.X < -MaxX)
+                else if (pointMass.Position.X < Bounds.Left)
                 {
-                    var force = (float)Math.Pow(-MaxX - pointMass.Position.X, Magnitude);
+                    var force = (float)Math.Pow(Bounds.Left - pointMass.Position.X, Magnitude);
                     if (force > MaximumForce)
                         force = MaximumForce;
                     pointMass.ApplyForce(new Vector2f(force, 0));
                 }
 
-                if (pointMass.Position.Y > MaxY)
+                if (pointMass.Position.Y > Bounds.Bottom)
                 {
-                    var force = (float)Math.Pow(pointMass.Position.Y - MaxY, Magnitude);
+                    var force = (float)Math.Pow(pointMass.Position.Y - Bounds.Bottom, Magnitude);
                     if (force > MaximumForce)
                         force = MaximumForce;
                     pointMass.ApplyForce(new Vector2f(0, -force));
                 }
-                else if (pointMass.Position.Y < -MaxY)
+                else if (pointMass.Position.Y < Bounds.Top)
                 {
-                    var force = (float)Math.Pow(-MaxY - pointMass.Position.Y, Magnitude);
+                    var force = (float)Math.Pow(Bounds.Top - pointMass.Position.Y, Magnitude);
                     if (force > MaximumForce)
                         force = MaximumForce;
                     pointMass.ApplyForce(new Vector2f(0, force));
