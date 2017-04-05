@@ -54,8 +54,8 @@ namespace Boing
             var target = Target;
 
             var delta = target.Position - source.Position;
-            var displacement = Length - delta.Norm();
-            var direction = delta.Normalized();
+            var direction = delta.Normalized(out float deltaNorm);
+            var displacement = Length - deltaNorm;
 
             Debug.Assert(!float.IsNaN(displacement), "!float.IsNaN(displacement)");
 
