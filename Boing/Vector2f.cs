@@ -73,7 +73,7 @@ namespace Boing
         {
             if (ReferenceEquals(null, obj))
                 return false;
-            return obj is Vector2f && Equals((Vector2f)obj);
+            return obj is Vector2f v && Equals(v);
         }
 
         public override int GetHashCode()
