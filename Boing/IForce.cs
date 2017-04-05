@@ -27,9 +27,15 @@ namespace Boing
     public interface IForce
     {
         /// <summary>
-        /// Update the simulation
+        /// Evaluates the impact of this force on the simulation at the current point in time,
+        /// and applies forces to point masses as required.
         /// </summary>
-        /// <param name="simulation"></param>
+        /// <remarks>
+        /// Implementations should call <see cref="PointMass.ApplyForce"/> on point masses.
+        /// They can update any number of point masses, or none at all. The force may be identical across
+        /// all point masses, but is more likely to vary from point to point.
+        /// </remarks>
+        /// <param name="simulation">The simulation to apply this force to.</param>
         void ApplyTo(Simulation simulation);
     }
 }

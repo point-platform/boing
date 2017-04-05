@@ -27,6 +27,7 @@ namespace Boing
             Coefficient = coefficient;
         }
 
+        /// <inheritdoc />
         void IForce.ApplyTo(Simulation simulation)
         {
             foreach (var pointMass in simulation.PointMasses)

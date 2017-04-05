@@ -31,6 +31,7 @@ namespace Boing
             Magnitude = magnitude;
         }
 
+        /// <inheritdoc />
         void IForce.ApplyTo(Simulation simulation)
         {
             foreach (var pointMass in simulation.PointMasses)

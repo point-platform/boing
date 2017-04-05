@@ -47,6 +47,7 @@ namespace Boing
             Math.Abs(Source.Position.X - Target.Position.X),
             Math.Abs(Source.Position.Y - Target.Position.Y));
 
+        /// <inheritdoc />
         void IForce.ApplyTo(Simulation simulation)
         {
             var source = Source;

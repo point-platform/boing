@@ -30,6 +30,7 @@ namespace Boing
             Stiffness = stiffness;
         }
 
+        /// <inheritdoc />
         void IForce.ApplyTo(Simulation simulation)
         {
             foreach (var pointMass in simulation.PointMasses)
