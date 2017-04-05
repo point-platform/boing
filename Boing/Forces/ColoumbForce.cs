@@ -29,7 +29,7 @@ namespace Boing
         public float Repulsion { get; set; }
         public float MaxDistance { get; set; }
 
-        public void ApplyTo(Simulation simulation)
+        void IForce.ApplyTo(Simulation simulation)
         {
             foreach (var pointMass1 in simulation.PointMasses)
             {
