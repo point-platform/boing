@@ -18,10 +18,21 @@
 
 namespace Boing
 {
+    /// <summary>
+    /// A force that acts upon point masses as a viscous environment would, exerting a force
+    /// that inhibits movement and is proportional to point mass velocity.
+    /// </summary>
     public sealed class ViscousForce : IForce
     {
+        /// <summary>
+        /// Gets and sets the coefficient of viscousity.
+        /// </summary>
         public float Coefficient { get; set; }
 
+        /// <summary>
+        /// Initialises a new instance of <see cref="ViscousForce"/>.
+        /// </summary>
+        /// <param name="coefficient">The initial coefficient of viscousity.</param>
         public ViscousForce(float coefficient)
         {
             Coefficient = coefficient;
