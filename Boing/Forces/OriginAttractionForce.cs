@@ -19,12 +19,24 @@
 namespace Boing
 {
     /// <summary>
-    /// An attraction towards the system's origin.
+    /// A force that attracts all non-pinned point masses towards the origin of the coordinate system.
     /// </summary>
     public sealed class OriginAttractionForce : IForce
     {
+        /// <summary>
+        /// Gets and sets the magnitude of the force.
+        /// </summary>
+        /// <remarks>
+        /// Positive values cause attraction to the origin, while negative values
+        /// cause repulsion from it. Larger values cause larger forces, and a zero
+        /// value effectively disables this force.
+        /// </remarks>
         public float Stiffness { get; set; }
 
+        /// <summary>
+        /// Initialises a new instance of <see cref="OriginAttractionForce"/>.
+        /// </summary>
+        /// <param name="stiffness"></param>
         public OriginAttractionForce(float stiffness = 40)
         {
             Stiffness = stiffness;
