@@ -18,6 +18,9 @@
 
 namespace Boing
 {
+    /// <summary>
+    /// A constant downwards force applied to all non-pinned points, akin to gravity.
+    /// </summary>
     public sealed class FlowDownwardForce : IForce
     {
         /// <summary>
@@ -25,7 +28,10 @@ namespace Boing
         /// </summary>
         public float Magnitude { get; set; }
 
-        /// <param name="magnitude">The magnitude of the downward force, in Newtons.</param>
+        /// <summary>
+        /// Initialises a new instance of <see cref="FlowDownwardForce"/>.
+        /// </summary>
+        /// <param name="magnitude">The magnitude of the downward force, in Newtons. The default value is 10.</param>
         public FlowDownwardForce(float magnitude = 10.0f)
         {
             Magnitude = magnitude;
@@ -35,7 +41,7 @@ namespace Boing
         void IForce.ApplyTo(Simulation simulation)
         {
             var force = new Vector2f(0, Magnitude);
-            
+
             foreach (var pointMass in simulation.PointMasses)
             {
                 if (pointMass.IsPinned)
