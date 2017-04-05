@@ -46,6 +46,9 @@ namespace Boing
         public float Top => Min.Y;
         public float Bottom => Max.Y;
 
+        public float Width => Right - Left;
+        public float Height => Bottom - Top;
+
         public Vector2f TopLeft => Min;
         public Vector2f TopRight => new Vector2f(Max.X, Min.Y);
         public Vector2f BottomLeft => new Vector2f(Min.X, Max.Y);
