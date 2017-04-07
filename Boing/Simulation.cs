@@ -67,10 +67,7 @@ namespace Boing
                 throw new ArgumentException("Already exists.", nameof(force));
         }
 
-        public bool Remove(IForce force)
-        {
-            return _forces.Remove(force);
-        }
+        public bool Remove(IForce force) => _forces.Remove(force);
 
         public void Add(PointMass pointMass)
         {
@@ -78,10 +75,7 @@ namespace Boing
                 throw new ArgumentException("Already exists.", nameof(pointMass));
         }
 
-        public bool Remove(PointMass pointMass)
-        {
-            return _pointMasses.Remove(pointMass);
-        }
+        public bool Remove(PointMass pointMass) => _pointMasses.Remove(pointMass);
 
         IEnumerator IEnumerable.GetEnumerator()
         {
