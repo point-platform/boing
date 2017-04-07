@@ -41,15 +41,18 @@ namespace Boing
 
         public float GetTotalKineticEnergy()
         {
+            // Ek = 1/2 m v^2
+
             float sum = 0;
+
             // ReSharper disable once LoopCanBeConvertedToQuery
             foreach (var pointMass in _pointMasses)
             {
-                // 1/2 m v^2
                 var speed = pointMass.Velocity.Norm();
-                sum += 0.5f*pointMass.Mass*speed*speed;
+                sum += pointMass.Mass*speed*speed;
             }
-            return sum;
+
+            return sum / 2;
         }
 
         public void Clear()
