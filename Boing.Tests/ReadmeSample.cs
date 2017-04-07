@@ -62,7 +62,7 @@ namespace Boing.Tests
                 }
             }
 
-            async Task RunAtEvenRateAsync(CancellationToken token)
+            async Task RunAtFixedRateAsync(CancellationToken token)
             {
                 var updater = new FixedTimeStepUpdater(simulation, timeStepSeconds: 1f/200);
 
@@ -78,7 +78,7 @@ namespace Boing.Tests
 
             // Reference methods to remove IDE warnings
             RunAtMaxSpeed();
-            RunAtEvenRateAsync(CancellationToken.None).Wait();
+            RunAtFixedRateAsync(CancellationToken.None).Wait();
         }
     }
 }
