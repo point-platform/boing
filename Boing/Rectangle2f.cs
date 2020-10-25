@@ -24,7 +24,7 @@ namespace Boing
     /// <summary>
     /// An axis-aligned rectangular area in a two dimensional coordinate system.
     /// </summary>
-    public struct Rectangle2f
+    public readonly struct Rectangle2f
     {
         /// <summary>
         /// The minimum point in the rectangle, which is also the top left corner.

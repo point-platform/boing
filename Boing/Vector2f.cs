@@ -25,7 +25,7 @@ namespace Boing
     /// <summary>
     /// A point in a two dimensional coordinate system.
     /// </summary>
-    public struct Vector2f
+    public readonly struct Vector2f
     {
         /// <summary>
         /// Initialises a <see cref="Vector2f"/>.

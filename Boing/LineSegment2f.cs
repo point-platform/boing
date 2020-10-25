@@ -21,7 +21,7 @@ namespace Boing
     /// <summary>
     /// A line segment in a two dimensional coordinate system.
     /// </summary>
-    public struct LineSegment2f
+    public readonly struct LineSegment2f
     {
         /// <summary>Gets the starting point of the line segment.</summary>
         public Vector2f From { get; }
