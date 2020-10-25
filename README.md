@@ -94,7 +94,6 @@ async Task RunAtFixedRateAsync(CancellationToken token)
         await Task.Delay(millisecondsDelay: 1/60, cancellationToken: token);
     }
 }
-
 ```
 
 For each `Render` call, the simulation will have multiple updates with smaller time deltas. 
