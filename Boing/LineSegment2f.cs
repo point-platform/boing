@@ -57,7 +57,7 @@ namespace Boing
         /// <returns><c>true</c> if the line segments intersect, otherwise <c>false</c>.</returns>
         public bool TryIntersect(LineSegment2f other, out Vector2f intersectionPoint, out float t, out float u)
         {
-            float Fake2DCross(Vector2f a, Vector2f b) => a.X * b.Y - a.Y * b.X;
+            static float Fake2DCross(Vector2f a, Vector2f b) => a.X * b.Y - a.Y * b.X;
 
             var p = From;
             var q = other.From;
