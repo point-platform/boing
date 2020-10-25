@@ -10,7 +10,6 @@
     <PackageTags>Physics simulation;Physics;Physics engine;Physics simulation library;Simulation</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/drewnoakes/boing/master/Resources/logo-square-512px.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/drewnoakes/boing</PackageProjectUrl>
-    <PackageLicenseUrl>https://www.apache.org/licenses/LICENSE-2.0.html</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/drewnoakes/boing.git</RepositoryUrl>
   </PropertyGroup>

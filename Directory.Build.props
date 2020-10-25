@@ -5,5 +5,6 @@
     <Authors>Drew Noakes;Krzysztof Dul</Authors>
     <LangVersion>8</LangVersion>
     <Nullable>enable</Nullable>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
   </PropertyGroup>
 </Project>
