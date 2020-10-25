@@ -3,7 +3,6 @@
   <PropertyGroup>
     <Description>A simple library for 2D physics simulations in .NET.</Description>
     <Copyright>Copyright Drew Noakes, Krzysztof Dul 2015-2020</Copyright>
-    <AssemblyTitle>Boing</AssemblyTitle>
     <VersionPrefix>1.0.0</VersionPrefix>
     <Authors>Drew Noakes;Krzysztof Dul</Authors>
     <TargetFrameworks>net35;netstandard1.0</TargetFrameworks>
@@ -13,8 +12,6 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <IncludeSymbols>true</IncludeSymbols>
     <IncludeSource>true</IncludeSource>
-    <AssemblyName>Boing</AssemblyName>
-    <PackageId>Boing</PackageId>
     <PackageTags>Physics simulation;Physics;Physics engine;Physics simulation library;Simulation</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/drewnoakes/boing/master/Resources/logo-square-512px.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/drewnoakes/boing</PackageProjectUrl>
