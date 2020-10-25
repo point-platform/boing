@@ -8,7 +8,19 @@
     <Nullable>enable</Nullable>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>logo-square-512px.png</PackageIcon>
+    <DebugType>portable</DebugType>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <IncludeSource>true</IncludeSource>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Deterministic>true</Deterministic>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Resources/logo-square-512px.png" Pack="true" PackagePath=""/>
