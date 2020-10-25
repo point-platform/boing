@@ -74,7 +74,7 @@ namespace Boing
                 // lines are collinear or parallel
                 t = float.NaN;
                 u = float.NaN;
-                intersectionPoint = default(Vector2f);
+                intersectionPoint = default;
                 return false;
             }
 
@@ -87,7 +87,7 @@ namespace Boing
             if (t < 0 || t > 1 || u < 0 || u > 1)
             {
                 // line segments do not intersect within their ranges
-                intersectionPoint = default(Vector2f);
+                intersectionPoint = default;
                 return false;
             }
 

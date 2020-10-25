@@ -116,7 +116,7 @@ namespace Boing
             var minT = float.MaxValue;
             var found = false;
 
-            intersectionPoint = default(Vector2f);
+            intersectionPoint = default;
 
             foreach (var edge in Edges)
             {

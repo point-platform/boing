@@ -99,7 +99,7 @@ namespace Boing
         /// <summary>
         /// Gets a vector with both <see cref="X"/> and <see cref="Y"/> equalling zero.
         /// </summary>
-        public static Vector2f Zero => default(Vector2f);
+        public static Vector2f Zero => default;
 
         #endregion
 
