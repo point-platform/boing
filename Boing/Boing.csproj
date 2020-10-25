@@ -8,6 +8,7 @@
     <Authors>Drew Noakes;Krzysztof Dul</Authors>
     <TargetFrameworks>net35;netstandard1.0</TargetFrameworks>
     <LangVersion>8</LangVersion>
+    <Nullable>enable</Nullable>
     <DebugType>portable</DebugType>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <IncludeSymbols>true</IncludeSymbols>

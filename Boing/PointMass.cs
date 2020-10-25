@@ -60,7 +60,7 @@ namespace Boing
         /// <remarks>
         /// This value is optional. It is provided for convenience, and is unused by the library.
         /// </remarks>
-        public object Tag { get; set; }
+        public object? Tag { get; set; }
 
         /// <summary>
         /// Gets and sets the position of this point mass.
