@@ -25,14 +25,14 @@ namespace Boing
     public sealed class ViscousForce : IForce
     {
         /// <summary>
-        /// Gets and sets the coefficient of viscousity.
+        /// Gets and sets the coefficient of viscosity.
         /// </summary>
         public float Coefficient { get; set; }
 
         /// <summary>
         /// Initialises a new instance of <see cref="ViscousForce"/>.
         /// </summary>
-        /// <param name="coefficient">The initial coefficient of viscousity.</param>
+        /// <param name="coefficient">The initial coefficient of viscosity.</param>
         public ViscousForce(float coefficient)
         {
             Coefficient = coefficient;

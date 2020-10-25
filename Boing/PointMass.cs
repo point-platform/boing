@@ -21,7 +21,7 @@ using System.Diagnostics;
 namespace Boing
 {
     /// <summary>
-    /// Models a idealised physical body for the purposes of simulation, having mass and infinitisimal volume and dimension.
+    /// Models an idealised physical body for the purposes of simulation, having mass and infinitesimal volume and dimension.
     /// </summary>
     /// <remarks>
     /// Point masses may be pinned, in which case forces and impulses should not be applied.
