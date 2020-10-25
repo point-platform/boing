@@ -8,7 +8,6 @@
     <IncludeSymbols>true</IncludeSymbols>
     <IncludeSource>true</IncludeSource>
     <PackageTags>Physics simulation;Physics;Physics engine;Physics simulation library;Simulation</PackageTags>
-    <PackageIconUrl>https://raw.githubusercontent.com/drewnoakes/boing/master/Resources/logo-square-512px.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/drewnoakes/boing</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/drewnoakes/boing.git</RepositoryUrl>

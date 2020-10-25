@@ -1,4 +1,5 @@
 <Project>
+
   <PropertyGroup>
     <Copyright>Copyright Drew Noakes, Krzysztof Dul 2015-2020</Copyright>
     <VersionPrefix>1.0.0</VersionPrefix>
@@ -6,5 +7,11 @@
     <LangVersion>8</LangVersion>
     <Nullable>enable</Nullable>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageIcon>logo-square-512px.png</PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Resources/logo-square-512px.png" Pack="true" PackagePath=""/>
+  </ItemGroup>
+
 </Project>
