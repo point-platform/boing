@@ -16,6 +16,8 @@
 
 #endregion
 
+using System.Numerics;
+
 namespace Boing
 {
     /// <summary>
@@ -40,7 +42,7 @@ namespace Boing
         /// <inheritdoc />
         void IForce.ApplyTo(Simulation simulation)
         {
-            var force = new Vector2f(0, Magnitude);
+            var force = new Vector2(0, Magnitude);
 
             foreach (var pointMass in simulation.PointMasses)
             {

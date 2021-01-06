@@ -17,6 +17,7 @@
 #endregion
 
 using System.Diagnostics;
+using System.Numerics;
 
 namespace Boing
 {
@@ -36,7 +37,7 @@ namespace Boing
     /// </remarks>
     public sealed class PointMass
     {
-        private Vector2f _force;
+        private Vector2 _force;
 
         /// <summary>
         /// Gets and sets the mass of this point mass.
@@ -69,7 +70,7 @@ namespace Boing
         /// In normal usage this property is modified by <see cref="IForce"/> implementations
         /// during simulation <see cref="Simulation.Update"/>.
         /// </remarks>
-        public Vector2f Position { get; set; }
+        public Vector2 Position { get; set; }
 
         /// <summary>
         /// Gets and sets the position of this point mass.
@@ -78,17 +79,17 @@ namespace Boing
         /// In normal usage this property is modified by <see cref="IForce"/> implementations
         /// during simulation <see cref="Simulation.Update"/>.
         /// </remarks>
-        public Vector2f Velocity { get; set; }
+        public Vector2 Velocity { get; set; }
 
         /// <summary>
         /// Initialises a new instance of <see cref="PointMass"/>.
         /// </summary>
         /// <param name="mass">The initial mass. The default value is 1.</param>
-        /// <param name="position">The initial position. The default value of <c>null</c> causes a random point between +/-0.5 in both X and Y to be set.</param>
-        public PointMass(float mass = 1.0f, Vector2f? position = null)
+        /// <param name="position">The initial position. The default value is (0,0).</param>
+        public PointMass(float mass = 1.0f, Vector2 position = default)
         {
             Mass = mass;
-            Position = position ?? Vector2f.Random();
+            Position = position;
         }
 
         /// <summary>
@@ -100,7 +101,7 @@ namespace Boing
         /// velocity and position be updated based upon any accumulated force.
         /// </remarks>
         /// <param name="force">The force to apply to the point mass.</param>
-        public void ApplyForce(Vector2f force)
+        public void ApplyForce(Vector2 force)
         {
             Debug.Assert(!float.IsNaN(force.X) && !float.IsNaN(force.Y), "!float.IsNaN(force.X) && !float.IsNaN(force.Y)");
             Debug.Assert(!float.IsInfinity(force.X) && !float.IsInfinity(force.Y), "!float.IsInfinity(force.X) && !float.IsInfinity(force.Y)");
@@ -118,7 +119,7 @@ namespace Boing
         /// to <see cref="Update"/>.
         /// </remarks>
         /// <param name="impulse">The impulse to apply to the point mass.</param>
-        public void ApplyImpulse(Vector2f impulse)
+        public void ApplyImpulse(Vector2 impulse)
         {
             // Update velocity
             Velocity += impulse/Mass;
@@ -141,7 +142,7 @@ namespace Boing
             Debug.Assert(!float.IsInfinity(Position.X) && !float.IsInfinity(Position.Y), "!float.IsInfinity(Position.X) && !float.IsInfinity(Position.Y)");
 
             // Clear force
-            _force = Vector2f.Zero;
+            _force = Vector2.Zero;
         }
     }
 }

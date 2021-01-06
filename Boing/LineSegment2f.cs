@@ -16,6 +16,8 @@
 
 #endregion
 
+using System.Numerics;
+
 namespace Boing
 {
     /// <summary>
@@ -24,16 +26,16 @@ namespace Boing
     public readonly struct LineSegment2f
     {
         /// <summary>Gets the starting point of the line segment.</summary>
-        public Vector2f From { get; }
+        public Vector2 From { get; }
         /// <summary>Gets the ending point of the line segment.</summary>
-        public Vector2f To { get; }
+        public Vector2 To { get; }
 
         /// <summary>
         /// Initialises a new instance of <see cref="LineSegment2f"/>.
         /// </summary>
         /// <param name="from">The starting point of the line segment</param>
         /// <param name="to">The ending point of the line segment</param>
-        public LineSegment2f(Vector2f from, Vector2f to)
+        public LineSegment2f(Vector2 from, Vector2 to)
         {
             From = from;
             To = to;
@@ -41,7 +43,7 @@ namespace Boing
 
         /// <summary>Gets a vector representing the difference of the line segment's endpoints.</summary>
         /// <remarks>Computed as <see cref="To"/> minus <see cref="From"/>.</remarks>
-        public Vector2f Delta => new Vector2f(To.X - From.X, To.Y - From.Y);
+        public Vector2 Delta => new Vector2(To.X - From.X, To.Y - From.Y);
 
         /// <summary>
         /// Attempt to intersect two line segments.
@@ -55,9 +57,9 @@ namespace Boing
         /// <param name="t">The distance along this line at which intersection would occur, or NaN if lines are collinear/parallel.</param>
         /// <param name="u">The distance along the other line at which intersection would occur, or NaN if lines are collinear/parallel.</param>
         /// <returns><c>true</c> if the line segments intersect, otherwise <c>false</c>.</returns>
-        public bool TryIntersect(LineSegment2f other, out Vector2f intersectionPoint, out float t, out float u)
+        public bool TryIntersect(LineSegment2f other, out Vector2 intersectionPoint, out float t, out float u)
         {
-            static float Fake2DCross(Vector2f a, Vector2f b) => a.X * b.Y - a.Y * b.X;
+            static float Fake2DCross(Vector2 a, Vector2 b) => a.X * b.Y - a.Y * b.X;
 
             var p = From;
             var q = other.From;

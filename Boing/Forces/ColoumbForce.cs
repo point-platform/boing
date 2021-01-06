@@ -85,7 +85,7 @@ namespace Boing
                         continue;
 
                     var delta = pointMass2.Position - pointMass1.Position;
-                    var distance = delta.Norm();
+                    var distance = delta.Length();
 
                     // ReSharper disable once CompareOfFloatsByEqualityOperator
                     if (distance == 0.0f || distance > MaxDistance)

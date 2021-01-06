@@ -19,6 +19,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 
 namespace Boing
 {
@@ -76,7 +77,7 @@ namespace Boing
             // ReSharper disable once LoopCanBeConvertedToQuery
             foreach (var pointMass in _pointMasses)
             {
-                var speed = pointMass.Velocity.Norm();
+                var speed = pointMass.Velocity.Length();
                 sum += pointMass.Mass*speed*speed;
             }
 

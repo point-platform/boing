@@ -18,6 +18,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 
 namespace Boing
 {
@@ -29,12 +30,12 @@ namespace Boing
         /// <summary>
         /// The minimum point in the rectangle, which is also the top left corner.
         /// </summary>
-        public Vector2f Min { get; }
+        public Vector2 Min { get; }
 
         /// <summary>
         /// The maximum point in the rectangle, which is also the bottom right corner.
         /// </summary>
-        public Vector2f Max { get; }
+        public Vector2 Max { get; }
 
         /// <summary>
         /// Initialises a new instance of <see cref="Rectangle2f"/> from the pair of its minimum and maximum points.
@@ -42,7 +43,7 @@ namespace Boing
         /// <param name="min">The minimum point, which is also the top left corner.</param>
         /// <param name="max">The maximum point, which is also the bottom right corner.</param>
         /// <exception cref="ArgumentException"></exception>
-        public Rectangle2f(Vector2f min, Vector2f max)
+        public Rectangle2f(Vector2 min, Vector2 max)
         {
             if (min.X > max.X)
                 throw new ArgumentException("min.X is greater than max.X");
@@ -61,7 +62,7 @@ namespace Boing
         /// <param name="width">The width of the rectangle.</param>
         /// <param name="height">The height of the rectangle.</param>
         public Rectangle2f(float x, float y, float width, float height)
-            : this(new Vector2f(x, y), new Vector2f(x + width, y + height))
+            : this(new Vector2(x, y), new Vector2(x + width, y + height))
         {}
 
         /// <summary>Gets the x value of the left edge.</summary>
@@ -79,13 +80,13 @@ namespace Boing
         public float Height => Bottom - Top;
 
         /// <summary> Gets the position of the top left corner. </summary>
-        public Vector2f TopLeft => Min;
+        public Vector2 TopLeft => Min;
         /// <summary> Gets the position of the top right corner. </summary>
-        public Vector2f TopRight => new Vector2f(Max.X, Min.Y);
+        public Vector2 TopRight => new Vector2(Max.X, Min.Y);
         /// <summary> Gets the position of the bottom left corner. </summary>
-        public Vector2f BottomLeft => new Vector2f(Min.X, Max.Y);
+        public Vector2 BottomLeft => new Vector2(Min.X, Max.Y);
         /// <summary> Gets the position of the bottom right corner. </summary>
-        public Vector2f BottomRight => Max;
+        public Vector2 BottomRight => Max;
 
         /// <summary>
         /// Enumerates the four edges of the rectangle.
@@ -111,7 +112,7 @@ namespace Boing
         /// <param name="intersectionPoint">The point of intersection.</param>
         /// <param name="t">the distance along this line at which intersection would occur, or zero if no intersection occurs.</param>
         /// <returns><c>true</c> if an intersection exists, otherwise <c>false</c>.</returns>
-        public bool TryIntersect(LineSegment2f line, out Vector2f intersectionPoint, out float t)
+        public bool TryIntersect(LineSegment2f line, out Vector2 intersectionPoint, out float t)
         {
             var minT = float.MaxValue;
             var found = false;
@@ -120,7 +121,7 @@ namespace Boing
 
             foreach (var edge in Edges)
             {
-                if (edge.TryIntersect(line, out Vector2f point, out float edgeT, out float lineT))
+                if (edge.TryIntersect(line, out Vector2 point, out float edgeT, out float lineT))
                 {
                     if (lineT > minT)
                         continue;
