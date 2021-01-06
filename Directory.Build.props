@@ -1,7 +1,7 @@
 <Project>
 
   <PropertyGroup>
-    <Copyright>Copyright Drew Noakes, Krzysztof Dul 2015-2020</Copyright>
+    <Copyright>Copyright Drew Noakes, Krzysztof Dul 2015-2021</Copyright>
     <VersionPrefix>1.1.0</VersionPrefix>
     <Authors>Drew Noakes;Krzysztof Dul</Authors>
     <LangVersion>9</LangVersion>
