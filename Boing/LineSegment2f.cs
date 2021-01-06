@@ -43,7 +43,7 @@ namespace Boing
 
         /// <summary>Gets a vector representing the difference of the line segment's endpoints.</summary>
         /// <remarks>Computed as <see cref="To"/> minus <see cref="From"/>.</remarks>
-        public Vector2 Delta => new Vector2(To.X - From.X, To.Y - From.Y);
+        public Vector2 Delta => new(To.X - From.X, To.Y - From.Y);
 
         /// <summary>
         /// Attempt to intersect two line segments.

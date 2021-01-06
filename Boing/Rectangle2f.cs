@@ -82,9 +82,9 @@ namespace Boing
         /// <summary> Gets the position of the top left corner. </summary>
         public Vector2 TopLeft => Min;
         /// <summary> Gets the position of the top right corner. </summary>
-        public Vector2 TopRight => new Vector2(Max.X, Min.Y);
+        public Vector2 TopRight => new(Max.X, Min.Y);
         /// <summary> Gets the position of the bottom left corner. </summary>
-        public Vector2 BottomLeft => new Vector2(Min.X, Max.Y);
+        public Vector2 BottomLeft => new(Min.X, Max.Y);
         /// <summary> Gets the position of the bottom right corner. </summary>
         public Vector2 BottomRight => Max;
 

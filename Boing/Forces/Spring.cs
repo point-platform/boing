@@ -91,13 +91,13 @@ namespace Boing
         /// Gets a 2D line segment whose start and end points match those of
         /// the <see cref="Source"/> and <see cref="Target"/> point mass positions.
         /// </summary>
-        public LineSegment2f LineSegment => new LineSegment2f(Source.Position, Target.Position);
+        public LineSegment2f LineSegment => new(Source.Position, Target.Position);
 
         /// <summary>
         /// Gets the 2D axis-aligned bounding box that encloses the <see cref="Source"/> and
         /// <see cref="Target"/> point mass positions.
         /// </summary>
-        public Rectangle2f Bounds => new Rectangle2f(
+        public Rectangle2f Bounds => new(
             Math.Min(Source.Position.X, Target.Position.X),
             Math.Min(Source.Position.Y, Target.Position.Y),
             Math.Abs(Source.Position.X - Target.Position.X),
