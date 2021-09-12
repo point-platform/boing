@@ -16,6 +16,8 @@
 
 #endregion
 
+using System.Numerics;
+
 namespace Boing
 {
     /// <summary>
@@ -37,7 +39,7 @@ namespace Boing
     /// <para />
     /// See https://en.wikipedia.org/wiki/Coulomb%27s_law for more information.
     /// </remarks>
-    public sealed class ColoumbForce : IForce
+    public sealed class ColoumbForce : IForce<Vector2>, IForce<Vector3>
     {
         /// <summary>
         /// Initialises a new instance of <see cref="ColoumbForce"/>.
@@ -72,7 +74,32 @@ namespace Boing
         public float MaxDistance { get; set; }
 
         /// <inheritdoc />
-        void IForce.ApplyTo(Simulation simulation)
+        void IForce<Vector2>.ApplyTo(Simulation<Vector2> simulation)
+        {
+            if (MaxDistance <= 0)
+                return;
+
+            foreach (var pointMass1 in simulation.PointMasses)
+            {
+                foreach (var pointMass2 in simulation.PointMasses)
+                {
+                    if (ReferenceEquals(pointMass1, pointMass2) || pointMass2.IsPinned)
+                        continue;
+
+                    var delta = pointMass2.Position - pointMass1.Position;
+                    var distance = delta.Length();
+
+                    // ReSharper disable once CompareOfFloatsByEqualityOperator
+                    if (distance == 0.0f || distance > MaxDistance)
+                        continue;
+
+                    pointMass2.ApplyForce(delta*Scale/(distance*distance));
+                }
+            }
+        }
+
+        /// <inheritdoc />
+        void IForce<Vector3>.ApplyTo(Simulation<Vector3> simulation)
         {
             if (MaxDistance <= 0)
                 return;

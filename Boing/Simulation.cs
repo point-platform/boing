@@ -25,27 +25,27 @@ namespace Boing
 {
     /// <summary>
     /// Top-level object for a Boing physical simulation.
-    /// Contains instances of <see cref="PointMass"/> and <see cref="IForce"/>,
+    /// Contains instances of <see cref="IPointMass{TVec}"/> and <see cref="IForce{TVec}"/>,
     /// and can update them one time step at a time.
     /// </summary>
-    public sealed class Simulation : IEnumerable
+    public sealed class Simulation<TVec> : IEnumerable
     {
-        private readonly HashSet<PointMass> _pointMasses = new();
-        private readonly HashSet<IForce> _forces = new();
+        private readonly HashSet<IPointMass<TVec>> _pointMasses = new();
+        private readonly HashSet<IForce<TVec>> _forces = new();
 
         /// <summary>
         /// Gets the set of point masses within this simulation.
         /// </summary>
-        public IEnumerable<PointMass> PointMasses => _pointMasses;
+        public IEnumerable<IPointMass<TVec>> PointMasses => _pointMasses;
 
         /// <summary>
         /// Gets the set of forces within this simulation.
         /// </summary>
-        public IEnumerable<IForce> Forces => _forces;
+        public IEnumerable<IForce<TVec>> Forces => _forces;
 
         /// <summary>
-        /// Progresses the simulation one time step, updating the <see cref="PointMass.Velocity"/> and
-        /// <see cref="PointMass.Position"/> of all point masses within the simulation.
+        /// Progresses the simulation one time step, updating the <see cref="IPointMass{TVec}.Velocity"/> and
+        /// <see cref="IPointMass{TVec}.Position"/> of all point masses within the simulation.
         /// </summary>
         /// <param name="dt">Elapsed time since the last update, in seconds.</param>
         public void Update(float dt)
@@ -77,7 +77,7 @@ namespace Boing
             // ReSharper disable once LoopCanBeConvertedToQuery
             foreach (var pointMass in _pointMasses)
             {
-                var speed = pointMass.Velocity.Length();
+                var speed = pointMass.Speed;
                 sum += pointMass.Mass*speed*speed;
             }
 
@@ -85,7 +85,7 @@ namespace Boing
         }
 
         /// <summary>
-        /// Removes all <see cref="PointMass"/> and <see cref="IForce"/> objects from the simulation.
+        /// Removes all <see cref="IPointMass{TVec}"/> and <see cref="IForce{TVec}"/> objects from the simulation.
         /// </summary>
         public void Clear()
         {
@@ -96,9 +96,9 @@ namespace Boing
         /// <summary>
         /// Adds <paramref name="force"/> to the simulation.
         /// </summary>
-        /// <param name="force">The <see cref="IForce"/> to add to the simulation.</param>
+        /// <param name="force">The <see cref="IForce{TVec}"/> to add to the simulation.</param>
         /// <exception cref="ArgumentException"><paramref name="force"/> already exists.</exception>
-        public void Add(IForce force)
+        public void Add(IForce<TVec> force)
         {
             if (!_forces.Add(force))
                 throw new ArgumentException("Already exists.", nameof(force));
@@ -107,15 +107,15 @@ namespace Boing
         /// <summary>
         /// Removes <paramref name="force"/> from the simulation.
         /// </summary>
-        /// <param name="force">The <see cref="IForce"/> to remove from the simulation.</param>
-        public bool Remove(IForce force) => _forces.Remove(force);
+        /// <param name="force">The <see cref="IForce{TVec}"/> to remove from the simulation.</param>
+        public bool Remove(IForce<TVec> force) => _forces.Remove(force);
 
         /// <summary>
         /// Adds <paramref name="pointMass"/> to the simulation.
         /// </summary>
-        /// <param name="pointMass">The <see cref="PointMass"/> to add to the simulation.</param>
+        /// <param name="pointMass">The <see cref="IPointMass{TVec}"/> to add to the simulation.</param>
         /// <exception cref="ArgumentException"><paramref name="pointMass"/> already exists.</exception>
-        public void Add(PointMass pointMass)
+        public void Add(IPointMass<TVec> pointMass)
         {
             if (!_pointMasses.Add(pointMass))
                 throw new ArgumentException("Already exists.", nameof(pointMass));
@@ -124,13 +124,13 @@ namespace Boing
         /// <summary>
         /// Removes <paramref name="pointMass"/> from the simulation.
         /// </summary>
-        /// <param name="pointMass">The <see cref="PointMass"/> to remove from the simulation.</param>
-        public bool Remove(PointMass pointMass) => _pointMasses.Remove(pointMass);
+        /// <param name="pointMass">The <see cref="IPointMass{TVec}"/> to remove from the simulation.</param>
+        public bool Remove(IPointMass<TVec> pointMass) => _pointMasses.Remove(pointMass);
 
         /// <inheritdoc />
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotSupportedException($"{nameof(Simulation)} only implements {nameof(IEnumerable)} to enable C# object initialisers.");
+            throw new NotSupportedException($"{nameof(Simulation<TVec>)} only implements {nameof(IEnumerable)} to enable C# object initialisers.");
         }
     }
 }

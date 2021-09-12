@@ -17,6 +17,7 @@
 #endregion
 
 using System;
+using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -27,18 +28,18 @@ namespace Boing.Tests
         public static void Code()
         {
             // create some point masses
-            var pointMass1 = new PointMass(mass: 1.0f);
-            var pointMass2 = new PointMass(mass: 2.0f);
+            var pointMass1 = new PointMass2(mass: 1.0f);
+            var pointMass2 = new PointMass2(mass: 2.0f);
 
             // create a new simulation
-            var simulation = new Simulation
+            var simulation = new Simulation<Vector2>
             {
                 // add the point masses
                 pointMass1,
                 pointMass2,
 
                 // create a spring between these point masses
-                new Spring(pointMass1, pointMass2, length: 20),
+                new Spring2(pointMass1, pointMass2, length: 20),
 
                 // point masses are attracted to one another
                 new ColoumbForce(),
@@ -64,7 +65,7 @@ namespace Boing.Tests
 
             async Task RunAtFixedRateAsync(CancellationToken token)
             {
-                var updater = new FixedTimeStepUpdater(simulation, timeStepSeconds: 1f/200);
+                var updater = new FixedTimeStepUpdater<Vector2>(simulation, timeStepSeconds: 1f/200);
 
                 while (!token.IsCancellationRequested)
                 {

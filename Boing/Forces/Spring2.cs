@@ -26,7 +26,7 @@ namespace Boing
     /// A force that models a linear spring between two point masses according to Hooke's law.
     /// </summary>
     /// <remarks>
-    /// Unlike many other <see cref="IForce"/> implementations, a single <see cref="Spring"/>
+    /// Unlike many other <see cref="IForce{TVec}"/> implementations, a single <see cref="Spring2"/>
     /// instance does not apply to all point masses in the simulation. It applies to two, only.
     /// <para />
     /// The spring is defined by its two point masses, a length and a spring constant.
@@ -42,7 +42,7 @@ namespace Boing
     /// <para />
     /// See https://en.wikipedia.org/wiki/Hooke%27s_law for more information.
     /// </remarks>
-    public sealed class Spring : IForce
+    public sealed class Spring2 : IForce<Vector2>
     {
         /// <summary>
         /// Gets one of the two point masses connected by this spring.
@@ -51,7 +51,7 @@ namespace Boing
         /// The orientation of the spring has no effect. <see cref="Source"/> and <see cref="Target"/>
         /// could be swapped and the outcome would be identical.
         /// </remarks>
-        public PointMass Source { get; }
+        public PointMass2 Source { get; }
 
         /// <summary>
         /// Gets one of the two point masses connected by this spring.
@@ -60,7 +60,7 @@ namespace Boing
         /// The orientation of the spring has no effect. <see cref="Source"/> and <see cref="Target"/>
         /// could be swapped and the outcome would be identical.
         /// </remarks>
-        public PointMass Target { get; }
+        public PointMass2 Target { get; }
 
         /// <summary>
         /// Gets and sets the resting length of the spring.
@@ -73,13 +73,13 @@ namespace Boing
         public float K { get; set; }
 
         /// <summary>
-        /// Initialises a new instance of <see cref="Spring"/>.
+        /// Initialises a new instance of <see cref="Spring2"/>.
         /// </summary>
         /// <param name="source">One of the two point masses.</param>
         /// <param name="target">One of the two point masses.</param>
         /// <param name="length">The resting length of the spring. The default value is 100 units.</param>
         /// <param name="k">The string constant. The default value is 80.</param>
-        public Spring(PointMass source, PointMass target, float length = 100.0f, float k = 80.0f)
+        public Spring2(PointMass2 source, PointMass2 target, float length = 100.0f, float k = 80.0f)
         {
             Source = source;
             Target = target;
@@ -104,14 +104,14 @@ namespace Boing
             Math.Abs(Source.Position.Y - Target.Position.Y));
 
         /// <inheritdoc />
-        void IForce.ApplyTo(Simulation simulation)
+        void IForce<Vector2>.ApplyTo(Simulation<Vector2> simulation)
         {
             var source = Source;
             var target = Target;
 
             var delta = target.Position - source.Position;
-            var direction = Vector2.Normalize(delta);
-            var deltaNorm = direction.Length();
+            var deltaNorm = delta.Length();
+            var direction = delta / deltaNorm;
             var displacement = Length - deltaNorm;
 
             Debug.Assert(!float.IsNaN(displacement), "!float.IsNaN(displacement)");

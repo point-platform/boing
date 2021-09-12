@@ -16,13 +16,15 @@
 
 #endregion
 
+using System.Numerics;
+
 namespace Boing
 {
     /// <summary>
     /// A force that acts upon point masses as a viscous environment would, exerting a force
     /// that inhibits movement and is proportional to point mass velocity.
     /// </summary>
-    public sealed class ViscousForce : IForce
+    public sealed class ViscousForce : IForce<Vector2>, IForce<Vector3>
     {
         /// <summary>
         /// Gets and sets the coefficient of viscosity.
@@ -39,7 +41,19 @@ namespace Boing
         }
 
         /// <inheritdoc />
-        void IForce.ApplyTo(Simulation simulation)
+        void IForce<Vector2>.ApplyTo(Simulation<Vector2> simulation)
+        {
+            foreach (var pointMass in simulation.PointMasses)
+            {
+                if (pointMass.IsPinned)
+                    continue;
+
+                pointMass.ApplyForce(pointMass.Velocity*-Coefficient);
+            }
+        }
+
+        /// <inheritdoc />
+        void IForce<Vector3>.ApplyTo(Simulation<Vector3> simulation)
         {
             foreach (var pointMass in simulation.PointMasses)
             {

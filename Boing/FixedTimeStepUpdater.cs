@@ -27,21 +27,21 @@ namespace Boing
     /// <para />
     /// Each call to <see cref="Update"/> may update the simulation zero or more times,
     /// </summary>
-    public sealed class FixedTimeStepUpdater
+    public sealed class FixedTimeStepUpdater<TVec>
     {
         private readonly Stopwatch _stopwatch = Stopwatch.StartNew();
         private readonly float _timeStepSeconds;
         private readonly long _timeStepTicks;
-        private readonly Simulation _simulation;
+        private readonly Simulation<TVec> _simulation;
         private long _leftOverTicks;
         private long _lastTicks;
 
         /// <summary>
-        /// Initialises a <see cref="FixedTimeStepUpdater"/>.
+        /// Initialises a <see cref="FixedTimeStepUpdater{TVec}"/>.
         /// </summary>
         /// <param name="simulation">The simulation to apply to.</param>
         /// <param name="timeStepSeconds">The number of seconds to </param>
-        public FixedTimeStepUpdater(Simulation simulation, float timeStepSeconds)
+        public FixedTimeStepUpdater(Simulation<TVec> simulation, float timeStepSeconds)
         {
             _simulation = simulation;
             _timeStepSeconds = timeStepSeconds;

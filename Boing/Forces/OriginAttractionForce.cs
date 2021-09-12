@@ -16,12 +16,14 @@
 
 #endregion
 
+using System.Numerics;
+
 namespace Boing
 {
     /// <summary>
     /// A force that attracts all non-pinned point masses towards the origin of the coordinate system.
     /// </summary>
-    public sealed class OriginAttractionForce : IForce
+    public sealed class OriginAttractionForce : IForce<Vector2>, IForce<Vector3>
     {
         /// <summary>
         /// Gets and sets the magnitude of the force.
@@ -43,7 +45,25 @@ namespace Boing
         }
 
         /// <inheritdoc />
-        void IForce.ApplyTo(Simulation simulation)
+        void IForce<Vector2>.ApplyTo(Simulation<Vector2> simulation)
+        {
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
+            if (Stiffness == 0)
+                return;
+
+            var f = -Stiffness;
+
+            foreach (var pointMass in simulation.PointMasses)
+            {
+                if (pointMass.IsPinned)
+                    continue;
+
+                pointMass.ApplyForce(f*pointMass.Position);
+            }
+        }
+
+        /// <inheritdoc />
+        void IForce<Vector3>.ApplyTo(Simulation<Vector3> simulation)
         {
             // ReSharper disable once CompareOfFloatsByEqualityOperator
             if (Stiffness == 0)

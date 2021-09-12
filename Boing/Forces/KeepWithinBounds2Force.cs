@@ -30,7 +30,7 @@ namespace Boing
     /// (with power determined by <see cref="Magnitude"/>). Forces are capped at <see cref="MaximumForce"/>
     /// to prevent destabilising the simulation.
     /// </remarks>
-    public sealed class KeepWithinBoundsForce : IForce
+    public sealed class KeepWithinBounds2Force : IForce<Vector2>
     {
         /// <summary>
         /// Gets and sets the rectangular bounds to which point masses are constrained.
@@ -51,12 +51,12 @@ namespace Boing
         public float MaximumForce { get; set; }
 
         /// <summary>
-        /// Initialises a new instance of <see cref="KeepWithinBoundsForce"/>.
+        /// Initialises a new instance of <see cref="KeepWithinBounds2Force"/>.
         /// </summary>
         /// <param name="bounds">The bounds to which point masses are constrained.</param>
         /// <param name="magnitude"></param>
         /// <param name="maximumForce">The upper limit on the force applied to particles. The default value is 1000 Newtons.</param>
-        public KeepWithinBoundsForce(Rectangle2f bounds, float magnitude = 3.0f, float maximumForce = 1000.0f)
+        public KeepWithinBounds2Force(Rectangle2f bounds, float magnitude = 3.0f, float maximumForce = 1000.0f)
         {
             Bounds = bounds;
             Magnitude = magnitude;
@@ -64,7 +64,7 @@ namespace Boing
         }
 
         /// <inheritdoc />
-        void IForce.ApplyTo(Simulation simulation)
+        void IForce<Vector2>.ApplyTo(Simulation<Vector2> simulation)
         {
             foreach (var pointMass in simulation.PointMasses)
             {

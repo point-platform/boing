@@ -23,7 +23,7 @@ namespace Boing
     /// <summary>
     /// A constant downwards force applied to all non-pinned points, akin to gravity.
     /// </summary>
-    public sealed class FlowDownwardForce : IForce
+    public sealed class FlowDownwardForce : IForce<Vector2>
     {
         /// <summary>
         /// The magnitude of the downward force, in Newtons.
@@ -40,7 +40,7 @@ namespace Boing
         }
 
         /// <inheritdoc />
-        void IForce.ApplyTo(Simulation simulation)
+        void IForce<Vector2>.ApplyTo(Simulation<Vector2> simulation)
         {
             var force = new Vector2(0, Magnitude);
 
