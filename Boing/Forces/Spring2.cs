@@ -109,6 +109,9 @@ namespace Boing
             var source = Source;
             var target = Target;
 
+            if (source.IsPinned && target.IsPinned)
+                return;
+
             var delta = target.Position - source.Position;
             var deltaNorm = delta.Length();
             var direction = delta / deltaNorm;
